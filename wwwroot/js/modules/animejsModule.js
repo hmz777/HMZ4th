@@ -5,7 +5,8 @@ var animationOptions = {
     center: 50,
     newWidth: 60,
     newHeight: 40,
-    backLoopAniActive: true
+    backLoopAniActive: true,
+    finalAudio: null
 };
 export function InitEyeMovement() {
     EyeTracker();
@@ -14,12 +15,13 @@ export function InitEyeMovement() {
 export function InitIntroTextAnimation() {
 
     let presenter = document.getElementById("presenter");
-    let animeContainers = document.querySelectorAll(".animate-container");
-    let secondaryAnimeContainers = document.querySelectorAll(".animate-s-container");
-    let letterSpans = document.querySelectorAll(".animate.letters");
-    let effectElements = document.querySelectorAll(".eff-el");
-    let finalText = document.querySelector(".f-text");
+    let animeContainers = document.querySelectorAll(".p-layer .animate-container");
+    let secondaryAnimeContainers = document.querySelectorAll(".p-layer .animate-s-container");
+    let letterSpans = document.querySelectorAll(".p-layer .animate.letters");
+    let effectElements = document.querySelectorAll(".p-layer .eff-el");
+    let finalText = document.querySelector(".p-layer .f-text");
     let logo = document.querySelector(".p-layer .logo");
+    let noSignal = document.querySelector(".p-layer #final-media");
 
     let StartAnimationObject = {
         first: {
@@ -236,8 +238,15 @@ export function InitIntroTextAnimation() {
             targets: logo,
             opacity: [0, 1],
             easing: "easeOutQuint",
-            duration: animationOptions.duration,
+            duration: animationOptions.duration + 1500,
             offt: "-=300"
+        },
+        twentieth: {
+            targets: noSignal,
+            opacity: [0, 1],
+            easing: "easeOutQuint",
+            duration: 1,
+            offt: "+=300"
         },
     };
 
@@ -252,7 +261,40 @@ export function InitIntroTextAnimation() {
 
     animeInstances.Home.finished.then(function () {
         animationOptions.backLoopAniActive = false;
+        noSignal.querySelector("#stop-audio").onclick = function () {
+            if (animationOptions.finalAudio != null) {
+                if (animationOptions.finalAudio.paused || animationOptions.finalAudio.ended) {
+                    animationOptions.finalAudio.muted = false;
+                    animationOptions.finalAudio.play();
+                    TogglePlayIcon(false);
+                } else {
+                    animationOptions.finalAudio.pause();
+                    TogglePlayIcon(true);
+                }
+            }
+        };
+        animationOptions.finalAudio = new Audio('/media/nosignal.mp3');
+        animationOptions.finalAudio.autoplay = true;
+        animationOptions.finalAudio.loop = true;
+        const promise = animationOptions.finalAudio.play();
+        if (promise !== undefined) {
+            promise.then(() => {
+
+            }).catch(error => {
+                TogglePlayIcon(true);
+            });
+        }
     });
+}
+
+function TogglePlayIcon(state) {
+    let btn = document.getElementById("stop-audio");
+    if (state) {
+        btn.querySelector("i").className = "las la-play-circle";
+    }
+    else {
+        btn.querySelector("i").className = "las la-pause-circle";
+    }
 }
 
 function BackSvgAnimation(duration, delay) {

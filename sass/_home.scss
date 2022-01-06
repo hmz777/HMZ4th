@@ -104,6 +104,29 @@
             }
         }
 
+        #final-media {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+
+            .no-signal {
+                width: 100%;
+                height: 100%;
+            }
+
+            #stop-audio {
+                position: absolute;
+                top: 1rem;
+                left: 1rem;
+                color: $accentColor3;
+            }
+
+            #stop-audio {
+                font-size: 4rem;
+            }
+        }
+
         .logo {
             opacity: 0;
         }
@@ -126,6 +149,10 @@
 
         &-5 {
             z-index: 6;
+        }
+
+        &-6 {
+            z-index: 7;
         }
     }
 
