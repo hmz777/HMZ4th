@@ -1,0 +1,28 @@
+﻿/*Icon Font*/
+$la-font-path: "../lib/line-awesome/dist/line-awesome/fonts";
+
+
+/*Font*/
+@import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;600&display=swap');
+$mainFont: 'Spline Sans', sans-serif;
+
+/*Colors*/
+$accentColor1: #190061;
+$accentColor2: #240090;
+$accentColor3: #3500D3;
+
+//Easings
+$easingDuration: .3s;
+$mainEasing: cubic-bezier(.25,.8,.25,1);
+
+/*Sidebar*/
+$sidebarBorderColor: $accentColor2;
+$sidebarBorderThickness: .2rem;
+$sidebarLinkColor: white;
+$sidebarLinkBorderThickness: .2rem;
+$sidebarLinkBorderColor: white;
+
+/*Logo*/
+$logoBackColor: $accentColor2;
+$logoLettersColor: white;
+$logoLettersSize: 5rem;

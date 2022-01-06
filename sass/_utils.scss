@@ -1,0 +1,25 @@
+﻿.text-acc3 {
+    color: $accentColor3 !important;
+}
+
+.standout-text {
+    font-size: 3rem;
+    font-weight: bold;
+
+    .letter {
+        text-align: center;
+    }
+}
+
+.text-shadow {
+    color: $accentColor3;
+    @include text-shadow($par3:0,$par4:black);
+}
+
+.mx--5 {
+    @include margin-x($val:0.5rem);
+}
+
+.m-auto {
+    margin: auto;
+}

@@ -1,0 +1,25 @@
+﻿@mixin text-shadow ($par1: -6px,$par2: -6px,$par3: 3px,$par4: $accentColor3) {
+    text-shadow: $par1 $par2 $par3 $par4;
+    transition: text-shadow $easingDuration $mainEasing;
+
+    &:hover {
+        text-shadow: 0 0 $par4;
+    }
+}
+
+@mixin underline {
+    &:after {
+        content: "";
+        display: block;
+        position: relative;
+        margin-top: .25rem;
+        height: $sidebarLinkBorderThickness;
+        background: $sidebarLinkBorderColor;
+        border-radius: 1em;
+    }
+}
+
+@mixin margin-x($val) {
+    margin-left: $val;
+    margin-right: $val;
+}
