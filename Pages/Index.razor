@@ -1,5 +1,4 @@
 ﻿@page "/"
-@implements IAsyncDisposable
 
 <div id="presenter">
     <svg id="back-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
@@ -25,18 +24,6 @@
         <span class="animate eff-el eff-el-2"><i class="las la-robot"></i></span>
     </div>
     <div class="p-layer p-layer-4">
-        <div class="animate f-text p-med">
-            <p>
-                If you stayed through this whole animation sequence,
-                then i salute you,
-                you're a gentleman and a scholar.
-            </p>
-            <p>
-                Now, go checkout the rest of the site. (no pressure)
-            </p>
-        </div>
-    </div>
-    <div class="p-layer p-layer-5">
         <div class="m-auto">
             <Logo />
         </div>
@@ -52,30 +39,3 @@
 <PageTitle>
     Hamzi Alsheikh - Portfolio & Blog
 </PageTitle>
-
-@code {
-    [Inject] IJSRuntime JSRuntime { get; set; }
-
-    IJSObjectReference AnimeJsModule;
-
-    protected async override Task OnInitializedAsync()
-    {
-        AnimeJsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/modules/animejsModule.js");
-    }
-
-    protected async override Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (!firstRender)
-        {
-            await AnimeJsModule.InvokeVoidAsync("InitIntroTextAnimation");
-        }
-    }
-
-    public async ValueTask DisposeAsync()
-    {
-        if (AnimeJsModule != null)
-        {
-            await AnimeJsModule.DisposeAsync();
-        }
-    }
-}
