@@ -35,21 +35,21 @@
 @code {
     [Inject] IJSRuntime JSRuntime { get; set; }
 
-    IJSObjectReference AnimeJsModule;
+    IJSObjectReference EyeModule;
     bool EyeInitialized;
 
     protected async override Task OnInitializedAsync()
     {
-        AnimeJsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/modules/animejsModule.js");
+        EyeModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/modules/eyeModule.js");
     }
 
     protected async override Task OnAfterRenderAsync(bool firstRender)
     {
         if (!firstRender)
         {
-            if (!EyeInitialized && AnimeJsModule != null)
+            if (!EyeInitialized && EyeModule != null)
             {
-                await AnimeJsModule.InvokeVoidAsync("InitEyeMovement");
+                await EyeModule.InvokeVoidAsync("InitAnimation");
                 EyeInitialized = true;
             }
         }
@@ -57,9 +57,10 @@
 
     public async ValueTask DisposeAsync()
     {
-        if (AnimeJsModule != null)
+        if (EyeModule != null)
         {
-            await AnimeJsModule.DisposeAsync();
+            await EyeModule.InvokeVoidAsync("Dispose");
+            await EyeModule.DisposeAsync();
         }
     }
 }

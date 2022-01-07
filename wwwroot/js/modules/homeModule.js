@@ -1,4 +1,6 @@
-﻿var animeInstances = {};
+﻿//#region Vars
+
+var animeInstances = {};
 var animationOptions = {
     duration: 1000,
     stagger: 200,
@@ -8,18 +10,19 @@ var animationOptions = {
     backLoopAniActive: true,
     finalAudio: null
 };
-export function InitEyeMovement() {
-    EyeTracker();
-}
 
-export function InitIntroTextAnimation() {
+
+//#endregion
+
+//#region API
+
+export function InitAnimation() {
 
     let presenter = document.getElementById("presenter");
     let animeContainers = document.querySelectorAll(".p-layer .animate-container");
     let secondaryAnimeContainers = document.querySelectorAll(".p-layer .animate-s-container");
     let letterSpans = document.querySelectorAll(".p-layer .animate.letters");
     let effectElements = document.querySelectorAll(".p-layer .eff-el");
-    let finalText = document.querySelector(".p-layer .f-text");
     let logo = document.querySelector(".p-layer .logo");
     let noSignal = document.querySelector(".p-layer #final-media");
 
@@ -220,20 +223,6 @@ export function InitIntroTextAnimation() {
             duration: animationOptions.duration,
             offt: "-=900"
         },
-        seventeenth: {
-            targets: finalText,
-            opacity: [0, 1],
-            easing: "easeOutQuint",
-            duration: animationOptions.duration + 2500,
-            offt: "-=300"
-        },
-        eighteenth: {
-            targets: finalText,
-            opacity: [1, 0],
-            easing: "easeOutQuint",
-            duration: animationOptions.duration,
-            offt: "+=300"
-        },
         nineteenth: {
             targets: logo,
             opacity: [0, 1],
@@ -287,6 +276,18 @@ export function InitIntroTextAnimation() {
     });
 }
 
+export function Dispose() {
+    for (let [key, value] of Object.entries(animeInstances)) {
+        value.pause();
+        value.reset();
+        value = null;
+    }
+}
+
+//#endregion
+
+//#region Functions
+
 function TogglePlayIcon(state) {
     let btn = document.getElementById("stop-audio");
     if (state) {
@@ -320,26 +321,4 @@ function BackSvgAnimation(duration, delay) {
     });
 }
 
-function EyeTracker() {
-    let InnerEye = document.getElementById('InnerEye');
-
-    document.addEventListener('mousemove', function (e) {
-        var numberX = ScaleDown(e.clientX, 0, window.innerWidth, 65 / 2, 65);
-        var numberY = ScaleDown(e.clientY, 0, window.innerHeight, 25 / 2, 30);
-
-        InnerEye.style.transform = 'translate('
-            + numberX
-            + 'px,'
-            + numberY
-            + 'px)';
-    });
-}
-
-function convertRemToPixels(rem) {
-    return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
-}
-
-function ScaleDown(value, oldMin, oldMax, newMin, newMax) {
-    let oP = (value - oldMin) / (oldMax - oldMin);
-    return ((newMax - newMin) * oP) + newMin;
-}
+//#endregion
