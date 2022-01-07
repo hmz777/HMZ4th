@@ -1,10 +1,17 @@
 ﻿/*Icon Font*/
 $la-font-path: "../lib/line-awesome/dist/line-awesome/fonts";
 
-
 /*Font*/
 @import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;600&display=swap');
 $mainFont: 'Spline Sans', sans-serif;
+
+/*Breakpoints*/
+$x-small: max-width 575px;
+$small: max-width 767px;
+$medium: max-width 991px;
+$large: max-width 1199px;
+$x-large: max-width 1399px;
+$xx-large: min-width 1400px;
 
 /*Colors*/
 $accentColor1: #190061;

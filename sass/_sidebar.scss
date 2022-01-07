@@ -12,6 +12,10 @@
     justify-content: flex-end;
     box-shadow: 0.5px 0.5px 3.6px rgba($accentColor3, 0.174), 1.3px 1.3px 10px rgba($accentColor3, 0.25), 3px 3px 24.1px rgba($accentColor3, 0.326), 10px 10px 80px rgba($accentColor3, 0.5);
 
+    @include breakpoint($medium) {
+        display: none;
+    }
+
     .links {
         display: flex;
         flex-flow: column wrap;
@@ -29,6 +33,7 @@
 
         ul {
             list-style: none;
+            text-align: right;
 
             li {
 
