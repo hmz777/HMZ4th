@@ -282,6 +282,12 @@ export function Dispose() {
         value.reset();
         value = null;
     }
+
+    if (animationOptions.finalAudio != null) {
+        animationOptions.finalAudio.muted = true;
+        animationOptions.finalAudio.pause();
+        animationOptions.finalAudio = null;
+    }
 }
 
 //#endregion
