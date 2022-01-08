@@ -1,4 +1,4 @@
-﻿@mixin text-shadow ($par1: -6px,$par2: -6px,$par3: 3px,$par4: $accentColor3) {
+﻿@mixin text-shadow ($par1: -6px,$par2: -6px,$par3: 0px,$par4: $accentColor3) {
     text-shadow: $par1 $par2 $par3 $par4;
     transition: text-shadow $easingDuration $mainEasing;
 

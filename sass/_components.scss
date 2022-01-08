@@ -10,23 +10,27 @@
 
 #page-transition {
     position: fixed;
-    left: 0;
-    top: -100%;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    width: 30rem;
+    height: 3rem;
+    padding: .5rem 1rem;
+    border-radius: 1rem;
     background: lightgray;
     display: flex;
-    transition: transform $easingDuration $mainEasing 1s;
+    transition: transform $easingDuration $mainEasing;
     z-index: 1000;
 
     &.active {
-        transform: translateY(100%);
+        transform: translate(-50%, 100%);
     }
+}
 
-    svg {
-        margin: auto;
-        height: auto;
-        max-width: 15rem;
-    }
+.content-article {
+    border-radius: $appBorderRadius;
+    border: $appBorderThickness solid $appBorderColor;
+    padding: $articlePadding;
+    overflow: hidden;
+    box-shadow: -15px -15px 0px 0px rgb(53, 0, 211);
+    min-height: 10rem;
 }
