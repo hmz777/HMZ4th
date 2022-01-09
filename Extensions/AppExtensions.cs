@@ -10,12 +10,12 @@ namespace HMZ4th.Extensions
 {
     public static class AppExtensions
     {
-        public static IServiceCollection AddDelegatedHttpClient(this IServiceCollection services)
+        public static IServiceCollection AddDelegatedHttpClient(this IServiceCollection services, string BaseAddress)
         {
             services.TryAddScoped<HttpClient>(provider =>
             {
                 var delegator = provider.GetRequiredService<HttpClientDelegator>();
-                return new HttpClient(delegator);
+                return new HttpClient(delegator) { BaseAddress = new Uri(BaseAddress) };
             });
 
             return services;
