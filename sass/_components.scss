@@ -26,11 +26,97 @@
     }
 }
 
+.article-header {
+    overflow: hidden;
+    padding: .5rem;
+    display: inline-block;
+}
+
 .content-article {
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
     border-radius: $appBorderRadius;
     border: $appBorderThickness solid $appBorderColor;
     padding: $articlePadding;
     overflow: hidden;
     box-shadow: -15px -15px 0px 0px rgb(53, 0, 211);
-    min-height: 10rem;
+}
+
+#skills-block {
+    .content-article {
+        background: white;
+        z-index: 2;
+        min-height: 20rem;
+    }
+
+    .skill-article-header {
+        display: flex;
+        flex-flow: row wrap;
+        position: relative;
+        justify-content: center;
+        z-index: 1;
+        bottom: .7rem;
+
+        .skill-article-header-item {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 1.2rem 1rem .5rem 1rem;
+            border-bottom: $appBorderThickness - .1rem solid $appBorderColor;
+            border-left: $appBorderThickness - .1rem solid $appBorderColor;
+            border-right: $appBorderThickness - .1rem solid $appBorderColor;
+            border-bottom-left-radius: $appBorderRadius;
+            border-bottom-right-radius: $appBorderRadius;
+            font-weight: bold;
+            transition: background $easingDuration $mainEasing,transform $easingDuration $mainEasing,color $easingDuration $mainEasing;
+            box-shadow: 5px 5px 0px 0px rgb(53, 0, 211);
+            position: relative;
+
+            @include breakpoint($x-large) {
+                &:not(:last-of-type) {
+                    /*margin-bottom: .2rem;*/
+                }
+            }
+
+            &.active {
+                color: white;
+                background: $accentColor5;
+                transform: translateY(.3rem);
+            }
+
+            &:not(:last-of-type) {
+                margin-right: .2rem;
+            }
+        }
+    }
+
+    .skill-article-body {
+        padding: .5rem;
+
+        .skill-article-body-item {
+            display: none;
+
+            &.active {
+                display: block;
+            }
+
+            .skill-block {
+                display: inline-block;
+                text-align: center;
+                border: solid $appBorderThickness $appBorderColor;
+                padding: $articlePadding;
+                border-radius: $appBorderRadius;
+                font-weight: bolder;
+                font-size: 1.2rem;
+                box-shadow: -5px -5px 0px 0px rgb(53, 0, 211);
+                margin-bottom: .5rem;
+                background: white;
+
+                &:not(:last-of-type) {
+                    margin-right: .5rem;
+                }
+            }
+        }
+    }
 }

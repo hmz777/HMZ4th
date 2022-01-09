@@ -38,6 +38,7 @@ main {
     padding: 2rem 4rem;
     height: 100%;
     width: 100%;
+    overflow-y: auto;
 }
 
 h1 {
@@ -69,4 +70,8 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
     margin: .5rem 0 2rem;
     display: inline-block;
+}
+
+button, a {
+    cursor: pointer;
 }
