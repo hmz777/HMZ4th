@@ -1,6 +1,7 @@
 ﻿using HMZ4th.Services;
 using HMZ4th.Shared;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +9,36 @@ using System.Text;
 using System.Threading.Tasks;
 namespace HMZ4th.Pages
 {
-    public partial class Blog : ComponentBase
+    public partial class Blog : ComponentBase, IAsyncDisposable
     {
-        [Inject] HttpClient HttpClient { get; set; }
+        [Inject] IJSRuntime JSRuntime { get; set; }
+        IJSObjectReference BlogModule;
 
-        string Content;
-        async Task DoRandomRequest()
+        bool InitAnimationPlayed;
+
+        protected async override Task OnInitializedAsync()
         {
-            var res = await HttpClient.SendAsync(new HttpRequestMessage(HttpMethod.Get, "https://reqres.in/api/users"));
-            Content = await res.Content.ReadAsStringAsync();
+            BlogModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/modules/blogModule.js");
+        }
+        protected async override Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (!firstRender)
+            {
+                if (InitAnimationPlayed == false)
+                {
+                    await BlogModule.InvokeVoidAsync("InitAnimation");
+                    InitAnimationPlayed = true;
+                }
+            }
+        }
 
-            StateHasChanged();
+        public async ValueTask DisposeAsync()
+        {
+            if (BlogModule != null)
+            {
+                await BlogModule.InvokeVoidAsync("Dispose");
+                await BlogModule.DisposeAsync();
+            }
         }
     }
 }
