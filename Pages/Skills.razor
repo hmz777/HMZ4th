@@ -1,7 +1,39 @@
 ﻿@page "/skills"
 
 <article id="skills-block">
-    <h1>Skills</h1>
-    <article class="content-article">
-    </article>
+    <header class="article-header">
+        <h1>Skills</h1>
+    </header>
+    @if (SkillsData != null)
+    {
+        <article class="content-article">
+
+            <div class="skill-article-body">
+                @{
+                    foreach (var skillCollection in SkillsData)
+                    {
+                        <div id="@skillCollection.Key.Replace(" ", "")" class="skill-article-body-item @(ActiveItem == skillCollection.Key ? "active" : "")">
+                            @foreach (var skill in skillCollection.Value)
+                            {
+                                <div class="skill-block">
+                                    @skill
+                                </div>
+                            }
+                        </div>
+                    }
+                }
+            </div>
+
+        </article>
+        <nav class="skill-article-header">
+            @{
+                foreach (var skillKey in SkillsData.Keys)
+                {
+                    <button type="button" @onclick="async () => { await SetActive(skillKey); }" class="skill-article-header-item @(ActiveItem == skillKey ? "active" : "")">
+                        @skillKey
+                    </button>
+                }
+            }
+        </nav>
+    }
 </article>
