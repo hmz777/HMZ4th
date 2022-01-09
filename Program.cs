@@ -10,6 +10,8 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddSingleton<TransitionPageService>();
 builder.Services.AddScoped<HttpClientDelegator>();
-builder.Services.AddDelegatedHttpClient();
+builder.Services.AddHttpClient("Local", c => { c.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress); })
+    .AddHttpMessageHandler<HttpClientDelegator>();
+builder.Services.AddHttpClient("External").AddHttpMessageHandler<HttpClientDelegator>();
 
 await builder.Build().RunAsync();

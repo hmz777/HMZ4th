@@ -13,7 +13,6 @@ namespace HMZ4th.Services
         public HttpClientDelegator(TransitionPageService transitionPageService)
         {
             this.transitionPageService = transitionPageService;
-            this.InnerHandler = new HttpClientHandler();
         }
         protected override async Task<HttpResponseMessage> SendAsync(
                                        HttpRequestMessage request,
