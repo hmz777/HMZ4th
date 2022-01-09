@@ -40,7 +40,7 @@ export function InitAnimation() {
         second: {
             targets: presenter,
             rotate: 360,
-            borderRadius: "0",
+            borderRadius: "1rem",
             easing: 'easeOutQuint',
             duration: animationOptions.duration,
             offt: "-=300"
