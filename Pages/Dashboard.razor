@@ -4,4 +4,27 @@
     <header class="article-header">
         <h1>Dashboard</h1>
     </header>
+    <div class="dashboard-article-body">
+        @if (DashboardGitHubWrapper.DataIsSet)
+        {
+            <DashboardBlock Name="GitHub Repos" Value="@DashboardGitHubWrapper.StatsModel.public_repos" />
+            <DashboardBlock Name="GitHub Forked Repos" Value="@DashboardGitHubWrapper.RepoModels.Count(r => r.fork == true)" />
+            <DashboardBlock Name="GitHub Gists" Value="@DashboardGitHubWrapper.StatsModel.public_gists" />
+            <DashboardBlock Name="GitHub Main Languages" Value="@DashboardGitHubWrapper.RepoModels.DistinctBy(r => r.language).Count()" />
+            <DashboardBlock Name="GitHub Followers" Value="@DashboardGitHubWrapper.StatsModel.followers" />
+            <DashboardBlock Name="GitHub Following" Value="@DashboardGitHubWrapper.StatsModel.following" />
+            <DashboardBlock Name="GitHub Total Stars" Value="@DashboardGitHubWrapper.RepoModels.Sum(r => r.stargazers_count)" />
+            <DashboardBlock Name="GitHub Total Forks" Value="@DashboardGitHubWrapper.RepoModels.Sum(r => r.forks_count)" />
+            <DashboardBlock Name="GitHub Repos Pushed To" Value="@DashboardGitHubWrapper.RepoModels.Count(r => r.pushed_at != default)" />
+            <DashboardBlock Name="GitHub Total PRs" Value="DashboardGitHubWrapper.IssueSearchModel.items.Count(i => i.pull_request != null)" />
+            <DashboardBlock Name="GitHub Total Commits" Value="@DashboardGitHubWrapper.CommitSearchModel.total_count" />
+            <DashboardBlock Name="GitHub Total Issues" Value="@DashboardGitHubWrapper.IssueSearchModel.items.Count(i => i.pull_request == null)" />
+        }
+        else
+        {
+            <p>
+                Nothing...
+            </p>
+        }
+    </div>
 </article>

@@ -1,0 +1,26 @@
+﻿<article class="content-article dashboard-block">
+    @if (HasLink)
+    {
+        <a href="@Link" target="_blank">
+            <header>
+                <h2>@Name</h2>
+            </header>
+            <i class="las la-external-link-square-alt"></i>
+        </a>
+    }
+    else
+    {
+        <header>
+            <h2>@Name</h2>
+        </header>
+    }
+    <p>@Value</p>
+</article>
+
+@code {
+    [Parameter] public string Name { get; set; }
+    [Parameter] public object Value { get; set; }
+    [Parameter] public string Link { get; set; }
+
+    public bool HasLink { get { return !string.IsNullOrWhiteSpace(Link); } }
+}
