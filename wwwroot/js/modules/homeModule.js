@@ -62,7 +62,7 @@ export function InitAnimation() {
         },
         fifth: {
             targets: presenter,
-            boxShadow: "-15px -15px 0px 0px rgb(53, 0, 211)",
+            boxShadow: "-15px -15px 0px 0px rgb(51, 0, 204)",
             easing: "linear",
             duration: animationOptions.duration,
             offt: "-=300"
