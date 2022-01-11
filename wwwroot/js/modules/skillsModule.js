@@ -13,6 +13,17 @@ export function InitAnimation() {
         autoPlay: true,
         loop: false
     });
+
+    anime({
+        targets: `#skills-block .skill-article-header-item`,
+        translateY: [-15, 0],
+        opacity: [0, 1],
+        easing: "easeOutQuint",
+        duration: 1000,
+        delay: anime.stagger(100, { start: 100 }),
+        autoPlay: true,
+        loop: false
+    });
 }
 
 export function Stagger(blockId) {

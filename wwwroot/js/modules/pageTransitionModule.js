@@ -23,7 +23,7 @@ function UpdateProgress(el, percent) {
     let prog = percent;
     if (el.className.indexOf('active') != -1) {
         if (parseInt(el.style.width.split('%')[0]) < 100) {
-            prog += Math.floor(Math.sqrt(prog / 2));
+            prog += 0.5 * Math.pow(1 - Math.sqrt(prog), 2);
             el.style.width = prog + "%";
             setTimeout(() => { UpdateProgress(el, prog); }, 1000);
         }
