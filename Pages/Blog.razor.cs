@@ -9,36 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace HMZ4th.Pages
 {
-    public partial class Blog : ComponentBase, IAsyncDisposable
+    public partial class Blog : TransitionPageBase<Blog>
     {
-        [Inject] IJSRuntime JSRuntime { get; set; }
-        IJSObjectReference BlogModule;
-
-        bool InitAnimationPlayed;
-
-        protected async override Task OnInitializedAsync()
-        {
-            BlogModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/modules/blogModule.js");
-        }
-        protected async override Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (!firstRender)
-            {
-                if (InitAnimationPlayed == false)
-                {
-                    await BlogModule.InvokeVoidAsync("InitAnimation");
-                    InitAnimationPlayed = true;
-                }
-            }
-        }
-
-        public async ValueTask DisposeAsync()
-        {
-            if (BlogModule != null)
-            {
-                await BlogModule.InvokeVoidAsync("Dispose");
-                await BlogModule.DisposeAsync();
-            }
-        }
     }
 }

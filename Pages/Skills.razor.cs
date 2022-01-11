@@ -12,40 +12,38 @@ using System.Threading.Tasks;
 
 namespace HMZ4th.Pages
 {
-    public partial class Skills : ComponentBase, IAsyncDisposable
+    public partial class Skills : TransitionPageBase<Skills>
     {
         [Inject] IHttpClientFactory HttpClientFactory { get; set; }
-        [Inject] IJSRuntime JSRuntime { get; set; }
 
         HttpClient LocalHttpClient { get; set; }
+        CancellationTokenSource CancellationTokenSource = new CancellationTokenSource();
 
         Dictionary<string, string[]> SkillsData;
 
-        IJSObjectReference SkillsModule;
-
         string ActiveItem;
-        bool InitAnimationPlayed;
         protected async override Task OnInitializedAsync()
         {
-            SkillsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/modules/skillsModule.js");
+            await base.OnInitializedAsync();
 
-            LocalHttpClient = HttpClientFactory.CreateClient("Local");
+            try
+            {
+                LocalHttpClient = HttpClientFactory.CreateClient("Local");
 
-            using var doc = await LocalHttpClient.GetFromJsonAsync<JsonDocument>("/data/skills.json");
-            SkillsData = doc?.RootElement.GetProperty("Skills").Deserialize<Dictionary<string, string[]>>();
+                using var doc = await LocalHttpClient.GetFromJsonAsync<JsonDocument>("/data/skills.json", CancellationTokenSource.Token);
+                SkillsData = doc?.RootElement.GetProperty("Skills").Deserialize<Dictionary<string, string[]>>();
 
-            ActiveItem = SkillsData?.First().Key ?? "";
+                ActiveItem = SkillsData?.First().Key ?? "";
+            }
+            catch { }
         }
 
         protected async override Task OnAfterRenderAsync(bool firstRender)
         {
+            await base.OnAfterRenderAsync(firstRender);
+
             if (!firstRender)
             {
-                if (InitAnimationPlayed == false)
-                {
-                    await SkillsModule.InvokeVoidAsync("InitAnimation");
-                    InitAnimationPlayed = true;
-                }
                 await StaggerSkills(ActiveItem);
             }
         }
@@ -59,16 +57,15 @@ namespace HMZ4th.Pages
 
         async Task StaggerSkills(string bodyId)
         {
-            await SkillsModule.InvokeVoidAsync("Stagger", bodyId.Replace(" ", ""));
+            await PageModule.InvokeVoidAsync("Stagger", bodyId.Replace(" ", ""));
         }
 
-        public async ValueTask DisposeAsync()
+        public async override ValueTask DisposeAsync()
         {
-            if (SkillsModule != null)
-            {
-                await SkillsModule.InvokeVoidAsync("Dispose");
-                await SkillsModule.DisposeAsync();
-            }
+            await base.DisposeAsync();
+            CancellationTokenSource?.Cancel();
+            CancellationTokenSource?.Dispose();
+            GC.SuppressFinalize(this);
         }
     }
 }

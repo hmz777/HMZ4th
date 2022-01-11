@@ -10,36 +10,7 @@ using System.Threading.Tasks;
 
 namespace HMZ4th.Pages
 {
-    public partial class About : ComponentBase, IAsyncDisposable
+    public partial class About : TransitionPageBase<About>
     {
-        [Inject] IJSRuntime JSRuntime { get; set; }
-        IJSObjectReference AboutModule;
-
-        bool InitAnimationPlayed;
-
-        protected async override Task OnInitializedAsync()
-        {
-            AboutModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/modules/aboutModule.js");
-        }
-        protected async override Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (!firstRender)
-            {
-                if (InitAnimationPlayed == false)
-                {
-                    await AboutModule.InvokeVoidAsync("InitAnimation");
-                    InitAnimationPlayed = true;
-                }
-            }
-        }
-
-        public async ValueTask DisposeAsync()
-        {
-            if (AboutModule != null)
-            {
-                await AboutModule.InvokeVoidAsync("Dispose");
-                await AboutModule.DisposeAsync();
-            }
-        }
     }
 }
