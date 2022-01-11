@@ -16,17 +16,23 @@ namespace HMZ4th.Services
         }
         protected override async Task<HttpResponseMessage> SendAsync(
                                        HttpRequestMessage request,
-                                       CancellationToken cancellationToken)
+                                       CancellationToken cancellationToken = default)
         {
-            //Enable the loader component
-            transitionPageService.DoTransition(true, cancellationToken);
 
-            await Task.Delay(5000);
+            if (cancellationToken.IsCancellationRequested)
+            {
+                //Cancel
+                transitionPageService.DoTransition(false);
+                return default;
+            }
+            else
+                //Enable the loader component
+                transitionPageService.DoTransition(true);
 
             var ResponseMessage = await base.SendAsync(request, cancellationToken);
 
             //Disable the loader component
-            transitionPageService.DoTransition(false, cancellationToken);
+            transitionPageService.DoTransition(false);
 
             return ResponseMessage;
         }
