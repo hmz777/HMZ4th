@@ -1,31 +1,46 @@
-﻿@implements IDisposable
+﻿@implements IAsyncDisposable
 
 <div id="page-transition" class="@Active">
     <div id="page-transition-inner">
         <span>Working...</span>
-        <div id="prograss-bar"></div>
+        <div class="@Active" id="prograss-bar"></div>
     </div>
 </div>
 
 @code {
     [Inject] TransitionPageService TransitionPageService { get; set; }
+    [Inject] IJSRuntime JSRuntime { get; set; }
+
+    IJSObjectReference ComponentModule;
 
     string Active { get; set; } = "";
 
-    protected override void OnInitialized()
+    protected async override Task OnInitializedAsync()
     {
+        ComponentModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import",
+            $"./js/modules/pageTransitionModule.js");
+
         TransitionPageService.Transition += Transition;
     }
 
-    void Transition(bool state)
+    async void Transition(bool state)
     {
         Active = state == false ? "" : "active";
-
         StateHasChanged();
+
+        await Animate(state);
     }
 
-    public void Dispose()
+    async Task Animate(bool state)
     {
-        TransitionPageService.Transition -= Transition;
+        await ComponentModule.InvokeVoidAsync("Animate", state);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (ComponentModule != null)
+        {
+            await ComponentModule.DisposeAsync();
+        }
     }
 }

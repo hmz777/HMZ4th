@@ -19,12 +19,14 @@ namespace HMZ4th.Services
                                        CancellationToken cancellationToken)
         {
             //Enable the loader component
-            transitionPageService.DoTransition(true);
+            transitionPageService.DoTransition(true, cancellationToken);
+
+            await Task.Delay(5000);
 
             var ResponseMessage = await base.SendAsync(request, cancellationToken);
 
             //Disable the loader component
-            transitionPageService.DoTransition(false);
+            transitionPageService.DoTransition(false, cancellationToken);
 
             return ResponseMessage;
         }

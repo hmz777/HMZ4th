@@ -10,6 +10,12 @@ namespace HMZ4th.Services
     {
         public event Action<bool> Transition;
 
-        public void DoTransition(bool state) { Transition?.Invoke(state); }
+        public void DoTransition(bool state, CancellationToken cancellationToken)
+        {
+            if (cancellationToken.IsCancellationRequested && state == true)
+                return;
+
+            Transition?.Invoke(state);
+        }
     }
 }
