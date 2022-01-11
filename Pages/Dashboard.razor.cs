@@ -27,20 +27,24 @@ namespace HMZ4th.Pages
 
             HttpClient = HttpClientFactory.CreateClient("External");
 
-            HttpClient.DefaultRequestHeaders.Add("Accept", "application/vnd.github.v3+json");
-            var T1 = HttpClient.GetFromJsonAsync<StatsModel>("https://api.github.com/users/hmz777",
-                CancellationTokenSource.Token);
-            var T2 = HttpClient.GetFromJsonAsync<List<RepoModel>>("https://api.github.com/users/hmz777/repos",
-                CancellationTokenSource.Token);
-            var T3 = HttpClient.GetFromJsonAsync<IssueSearchModel>("https://api.github.com/search/issues?q=author:hmz777",
-                CancellationTokenSource.Token);
-            var T4 = HttpClient.GetFromJsonAsync<CommitSearchModel>("https://api.github.com/search/commits?q=author:hmz777",
-                CancellationTokenSource.Token);
+            try
+            {
+                HttpClient.DefaultRequestHeaders.Add("Accept", "application/vnd.github.v3+json");
+                var T1 = HttpClient.GetFromJsonAsync<StatsModel>("https://api.github.com/users/hmz777",
+                    CancellationTokenSource.Token);
+                var T2 = HttpClient.GetFromJsonAsync<List<RepoModel>>("https://api.github.com/users/hmz777/repos",
+                    CancellationTokenSource.Token);
+                var T3 = HttpClient.GetFromJsonAsync<IssueSearchModel>("https://api.github.com/search/issues?q=author:hmz777",
+                    CancellationTokenSource.Token);
+                var T4 = HttpClient.GetFromJsonAsync<CommitSearchModel>("https://api.github.com/search/commits?q=author:hmz777",
+                    CancellationTokenSource.Token);
 
-            DashboardGitHubWrapper.StatsModel = await T1;
-            DashboardGitHubWrapper.RepoModels = await T2;
-            DashboardGitHubWrapper.IssueSearchModel = await T3;
-            DashboardGitHubWrapper.CommitSearchModel = await T4;
+                DashboardGitHubWrapper.StatsModel = await T1;
+                DashboardGitHubWrapper.RepoModels = await T2;
+                DashboardGitHubWrapper.IssueSearchModel = await T3;
+                DashboardGitHubWrapper.CommitSearchModel = await T4;
+            }
+            catch { }
         }
 
         public override async ValueTask DisposeAsync()

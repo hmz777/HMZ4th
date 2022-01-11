@@ -12,6 +12,10 @@ namespace HMZ4th.Models
         public StatsModel StatsModel { get; set; }
         public IssueSearchModel IssueSearchModel { get; set; }
         public CommitSearchModel CommitSearchModel { get; set; }
-        public bool DataIsSet => RepoModels != null && StatsModel != null && IssueSearchModel != null;
+        public bool DataIsSet =>
+            RepoModels != null
+            && StatsModel != null
+            && IssueSearchModel != null
+            && CommitSearchModel != null;
     }
 }
