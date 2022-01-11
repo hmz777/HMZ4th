@@ -30,6 +30,12 @@ $articlePadding: 1rem;
 $easingDuration: .3s;
 $mainEasing: cubic-bezier(.25,.8,.25,1);
 
+/*Progress Bar*/
+$pBBackColor: $accentColor3;
+$pBInnerBackColor: $accentColor2;
+$progressBarBackColor: white;
+$pBColor: white;
+
 /*Sidebar*/
 $sidebarBorderColor: $accentColor2;
 $sidebarBorderThickness: .2rem;
