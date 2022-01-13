@@ -12,7 +12,9 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
+    <None Include="Shared\Contact\LabelCustom.razor" />
     <None Include="Shared\Dashboard\DashboardBlock.razor" />
+    <None Include="Shared\Notifications\NotificationMessage.razor" />
   </ItemGroup>
 
   <ItemGroup>
