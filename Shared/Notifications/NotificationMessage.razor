@@ -1,0 +1,86 @@
+﻿@using HMZ4th.Services
+@using HMZ4th.Models
+@using System.Timers
+@implements IDisposable
+
+<div id="notification-container" class="@Status @NotificationType.ToString()">
+    <i class="notification-icon las la @Icon la-2x"></i>
+    <p class="notification-message">@Message</p>
+</div>
+
+@code {
+    [Inject] NotificationService NotificationService { get; set; }
+
+    string Status = "";
+    string Message;
+    string Icon;
+    NotificationType NotificationType;
+
+    Timer Timer;
+
+    protected override void OnInitialized()
+    {
+        NotificationService.OnMessageReceive += OnMessageReceiveHandler;
+    }
+
+    void Show()
+    {
+        Status = "active";
+        StateHasChanged();
+    }
+
+    void Hide()
+    {
+        Status = "";
+        StateHasChanged();
+    }
+
+    void SetIcon()
+    {
+        switch (NotificationType)
+        {
+            case NotificationType.Error:
+                Icon = "la-times-circle";
+                break;
+            case NotificationType.Success:
+                Icon = "la-check-circle";
+                break;
+            case NotificationType.Information:
+                Icon = "la-info-circle";
+                break;
+            case NotificationType.Warning:
+                Icon = "la-exclamation-circle";
+                break;
+            default:
+                Icon = "la-times-circle";
+                break;
+        }
+    }
+
+    void OnMessageReceiveHandler(NotificationMessageModel notificationMessageModel)
+    {
+        Message = notificationMessageModel.NotificationMessage;
+        NotificationType = notificationMessageModel.NotificationType;
+
+        Show();
+
+        Timer = new Timer()
+            {
+                Interval = 5000
+            };
+
+        Timer.Elapsed += (obj, args) =>
+        {
+            Hide();
+            Timer.Enabled = false;
+            Timer.Dispose();
+        };
+
+        Timer.Enabled = true;
+    }
+
+    public void Dispose()
+    {
+        NotificationService.OnMessageReceive -= OnMessageReceiveHandler;
+    }
+}
