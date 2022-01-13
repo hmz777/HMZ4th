@@ -25,7 +25,7 @@ namespace HMZ4th.Shared
         {
             if (!firstRender)
             {
-                if (InitAnimationPlayed == false)
+                if (InitAnimationPlayed == false && PageModule != null)
                 {
                     await PageModule.InvokeVoidAsync("InitAnimation");
                     InitAnimationPlayed = true;
