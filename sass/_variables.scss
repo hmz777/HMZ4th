@@ -3,7 +3,9 @@ $la-font-path: "../lib/line-awesome/dist/line-awesome/fonts";
 
 /*Font*/
 @import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;700&display=swap');
 $mainFont: 'Spline Sans', sans-serif;
+$mainFont: 'Maven Pro', sans-serif;
 
 /*Breakpoints*/
 $x-small: max-width 575px;

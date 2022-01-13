@@ -83,5 +83,6 @@
         color: $logoLettersColor;
         font-size: $logoLettersSize;
         @include text-shadow;
+        font-weight: bold;
     }
 }
