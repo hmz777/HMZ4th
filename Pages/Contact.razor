@@ -1,8 +1,92 @@
 ﻿@inherits TransitionPageBase<Contact>
+@using HMZ4th.Models
+@using HMZ4th.Shared.Contact
+@using System.Text
 @page "/contact"
 
-<article id="about-block">
+<article id="contact-block">
     <header class="article-header">
         <h1>Contact Me</h1>
     </header>
+    <article class="content-article">
+        <EditForm id="contact-form" EditContext="EditContext" OnValidSubmit="OnValidSubmit" OnInvalidSubmit="OnInValidSubmit">
+            <legend>
+                Send me a message!
+            </legend>
+            <DataAnnotationsValidator />
+            <div class="form-input-wrapper form-el">
+                <InputTextCustom placeholder=" " class="form-input" type="text" @bind-Value="ContactModel.FullName" />
+                <LabelCustom For="@(() => ContactModel.FullName)"></LabelCustom>
+                <ValidationMessage For="@(() => ContactModel.FullName)" />
+            </div>
+            <div class="form-input-wrapper form-el">
+                <InputTextCustom placeholder=" " class="form-input" type="email" @bind-Value="ContactModel.Email" />
+                <LabelCustom For="@(() => ContactModel.Email)"></LabelCustom>
+                <ValidationMessage For="@(() => ContactModel.Email)" />
+            </div>
+            <div class="form-input-wrapper form-el">
+                <InputTextCustom placeholder=" " class="form-input" type="text" @bind-Value="ContactModel.Subject" />
+                <LabelCustom For="@(() => ContactModel.Subject)"></LabelCustom>
+                <ValidationMessage For="@(() => ContactModel.Subject)" />
+            </div>
+            <div class="form-input-wrapper form-el">
+                <TextAreaCustom placeholder=" " class="form-input" rows="5" @bind-Value="ContactModel.Message"></TextAreaCustom>
+                <LabelCustom For="@(() => ContactModel.Message)"></LabelCustom>
+                <ValidationMessage For="@(() => ContactModel.Message)" />
+            </div>
+            <button class="form-el @SubmitButtonState" @onclick="OnInValidSubmit" type="submit">Send</button>
+        </EditForm>
+    </article>
 </article>
+
+@code {
+    [Inject] IHttpClientFactory HttpClientFactory { get; set; }
+    [Inject] NotificationService NotificationService { get; set; }
+    HttpClient HttpClient { get; set; }
+
+    ContactModel ContactModel = new();
+    EditContext? EditContext { get; set; }
+
+    string SubmitButtonState;
+
+    protected override void OnInitialized()
+    {
+        EditContext = new EditContext(ContactModel);
+        HttpClient = HttpClientFactory.CreateClient("External");
+    }
+
+    async Task OnValidSubmit()
+    {
+        SubmitButtonState = "active";
+
+        var message = new HttpRequestMessage(HttpMethod.Post, "https://formspree.io/f/mzbkrpry");
+        message.Headers.Clear();
+        message.SetBrowserRequestMode(BrowserRequestMode.Cors);
+        message.Content = new StringContent(JsonSerializer.Serialize(EditContext.Model), Encoding.UTF8, "application/json");
+        await HttpClient.SendAsync(message, HttpCompletionOption.ResponseContentRead);
+
+        ContactModel = new ContactModel();
+        EditContext = new EditContext(ContactModel);
+
+        var notifMessage = new NotificationMessageModel
+            {
+                NotificationMessage = "Message sent successfully!",
+                NotificationType = NotificationType.Success
+            };
+
+        await InvokeAsync(() => { NotificationService.Show(notifMessage); });
+
+        SubmitButtonState = "";
+    }
+
+    async Task OnInValidSubmit()
+    {
+        var notifMessage = new NotificationMessageModel
+            {
+                NotificationMessage = "Invalid message!",
+                NotificationType = NotificationType.Error
+            };
+
+        await InvokeAsync(() => { NotificationService.Show(notifMessage); });
+    }
+}

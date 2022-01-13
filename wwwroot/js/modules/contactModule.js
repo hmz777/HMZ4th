@@ -13,6 +13,16 @@ export function InitAnimation() {
         autoPlay: true,
         loop: false
     });
+
+    anime({
+        targets: '.form-el',
+        translateY: [100, 0],
+        easing: "easeOutQuint",
+        duration: GlobalOptions.HeaderAnimationDuration,
+        autoPlay: true,
+        loop: false,
+        delay: anime.stagger(100, { start: 100 })
+    });
 }
 
 export function Dispose() {
