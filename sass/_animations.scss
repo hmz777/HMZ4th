@@ -10,10 +10,20 @@
 
 @keyframes TransDown {
     from {
-        transform: translateY(0);
+        transform: translateY(-0.5rem);
     }
 
     to {
-        transform: translateY(0.5rem);
+        transform: translateY(0);
+    }
+}
+
+@keyframes FadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
     }
 }

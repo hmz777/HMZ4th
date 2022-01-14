@@ -12,7 +12,7 @@
     position: fixed;
     top: 1rem;
     left: 50%;
-    transform: translate(-50%, -5rem);
+    transform: translate(-50%, -20rem);
     width: 30rem;
     height: 3rem;
     padding: .5rem;
@@ -79,48 +79,65 @@
     width: 100%;
 }
 
-#notification-container {
+#notification-container-list {
     position: fixed;
-    top: -100%;
-    left: 50%;
-    transform: translate(-50%,-10rem);
+    top: 0;
+    right: 2rem;
+    transform: translate(0,-200%);
     display: flex;
-    flex-flow: row;
-    align-items: center;
-    padding: 1rem;
-    border-radius: 1rem;
-    max-width: 35rem;
+    flex-flow: column wrap;
     z-index: 1001;
-    color: white;
-    box-shadow: 0px 0.9px 2.7px rgba(0, 0, 0, 0.093), 0px 2.2px 6.9px rgba(0, 0, 0, 0.133), 0px 4.4px 14.2px rgba(0, 0, 0, 0.167), 0px 9.1px 29.2px rgba(0, 0, 0, 0.207), 0px 25px 80px rgba(0, 0, 0, 0.3);
-    transition: transform .3s $mainEasing;
 
     &.active {
-        transform: translate(-50%,10rem);
+        transform: translate(0,1rem);
     }
 
-    &.Error {
-        background-color: red;
-    }
+    .notification-container {
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        padding: 1rem;
+        border-radius: 1rem;
+        max-width: 35rem;
+        color: white;
+        box-shadow: 0px 0.9px 2.7px rgba(0, 0, 0, 0.093), 0px 2.2px 6.9px rgba(0, 0, 0, 0.133), 0px 4.4px 14.2px rgba(0, 0, 0, 0.167), 0px 9.1px 29.2px rgba(0, 0, 0, 0.207), 0px 25px 80px rgba(0, 0, 0, 0.3);
+        transition: transform .3s $mainEasing,opacity .3s $mainEasing;
 
-    &.Success {
-        background-color: lawngreen;
-    }
+        &:not(:last-of-type) {
+            margin-bottom: 1rem;
+        }
 
-    &.Information {
-        background-color: dodgerblue;
-    }
+        &.active {
+            animation-name: TransDown, FadeOut;
+            animation-duration: 500ms, 300ms;
+            animation-delay: 0ms, 5000ms;
+            animation-fill-mode: forwards, forwards;
+            animation-timing-function: $mainEasing, $mainEasing;
+        }
 
-    &.Warning {
-        background-color: orange;
-    }
+        &.Error {
+            background-color: red;
+        }
 
-    .notification-icon {
-        margin-right: 1rem;
-    }
+        &.Success {
+            background-color: forestgreen;
+        }
 
-    .notification-message {
-        margin: 0;
-        word-break: break-word;
+        &.Information {
+            background-color: dodgerblue;
+        }
+
+        &.Warning {
+            background-color: orange;
+        }
+
+        .notification-icon {
+            margin-right: 1rem;
+        }
+
+        .notification-message {
+            margin: 0;
+            word-break: break-word;
+        }
     }
 }
