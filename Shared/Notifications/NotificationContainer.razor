@@ -1,0 +1,55 @@
+﻿@using HMZ4th.Models
+@using HMZ4th.Services
+@implements IDisposable
+
+<div id="notification-container-list" class="@Status">
+    @foreach (var msg in MessageQueue)
+    {
+        <NotificationMessage @key="msg.NotificationId"
+                         NotificationId="@msg.NotificationId"
+                         NotificationMessageModel="msg"
+                         NotificationFinishedCallback="@NotificationFinishedCallback" />
+    }
+</div>
+
+@code {
+    [Inject] NotificationService NotificationService { get; set; }
+
+    Queue<NotificationMessageModel> MessageQueue = new();
+
+    string Status;
+
+    protected override void OnInitialized()
+    {
+        NotificationService.OnMessageReceive += OnMessageReceiveHandler;
+    }
+
+    async void OnMessageReceiveHandler(NotificationMessageModel notificationMessageModel)
+    {
+        //Throttle notification creation for everything to work as expected
+        //when reporting faulty operations
+        //could be adjusted later
+        await Task.Delay(500);
+
+        //Assign an id for the notification for two reasons:
+        //identification and for the renderer to assign it as key for the rendered component
+        notificationMessageModel.NotificationId = Guid.NewGuid().ToString();
+        MessageQueue.Enqueue(notificationMessageModel);
+        Status = "active";
+        StateHasChanged();
+    }
+
+    void NotificationFinishedCallback(string notifId) //We'll try the queue for now
+    {
+        MessageQueue.Dequeue();
+        if (MessageQueue.Count == 0)
+            Status = "";
+
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        NotificationService.OnMessageReceive -= OnMessageReceiveHandler;
+    }
+}

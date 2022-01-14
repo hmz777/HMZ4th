@@ -3,30 +3,39 @@
 @using System.Timers
 @implements IDisposable
 
-<div id="notification-container" class="@Status @NotificationType.ToString()">
+<div class="notification-container @Status @NotificationMessageModel.NotificationType.ToString()">
     <i class="notification-icon las la @Icon la-2x"></i>
-    <p class="notification-message">@Message</p>
+    <p class="notification-message">@NotificationMessageModel.NotificationMessage</p>
 </div>
 
 @code {
-    [Inject] NotificationService NotificationService { get; set; }
+    [Parameter] public string NotificationId { get; set; }
+    [Parameter] public NotificationMessageModel NotificationMessageModel { get; set; }
+    [Parameter] public EventCallback<string> NotificationFinishedCallback { get; set; }
 
-    string Status = "";
-    string Message;
+    string Status;
     string Icon;
-    NotificationType NotificationType;
-
     Timer Timer;
 
-    protected override void OnInitialized()
+    protected override void OnParametersSet()
     {
-        NotificationService.OnMessageReceive += OnMessageReceiveHandler;
+        SetIcon();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Show();
+        }
     }
 
     void Show()
     {
         Status = "active";
         StateHasChanged();
+
+        StartTimer();
     }
 
     void Hide()
@@ -35,9 +44,29 @@
         StateHasChanged();
     }
 
+    void StartTimer()
+    {
+        Timer = new Timer()
+            {
+                Interval = 5400
+            };
+
+        Timer.Elapsed += async (obj, args) =>
+        {
+            Hide();
+            Timer.Enabled = false;
+            Timer.Dispose();
+
+            //Inform the container that this notification should be removed becuase it's over
+            await NotificationFinishedCallback.InvokeAsync(NotificationId);
+        };
+
+        Timer.Enabled = true;
+    }
+
     void SetIcon()
     {
-        switch (NotificationType)
+        switch (NotificationMessageModel.NotificationType)
         {
             case NotificationType.Error:
                 Icon = "la-times-circle";
@@ -57,30 +86,8 @@
         }
     }
 
-    void OnMessageReceiveHandler(NotificationMessageModel notificationMessageModel)
-    {
-        Message = notificationMessageModel.NotificationMessage;
-        NotificationType = notificationMessageModel.NotificationType;
-
-        Show();
-
-        Timer = new Timer()
-            {
-                Interval = 5000
-            };
-
-        Timer.Elapsed += (obj, args) =>
-        {
-            Hide();
-            Timer.Enabled = false;
-            Timer.Dispose();
-        };
-
-        Timer.Enabled = true;
-    }
-
     public void Dispose()
     {
-        NotificationService.OnMessageReceive -= OnMessageReceiveHandler;
+        Timer?.Dispose();
     }
 }
