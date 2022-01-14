@@ -10,3 +10,7 @@ button {
 input, textarea {
     outline: none;
 }
+
+textarea {
+    resize: vertical;
+}
