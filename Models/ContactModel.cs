@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace HMZ4th.Models
@@ -32,5 +33,8 @@ namespace HMZ4th.Models
         [StringLength(5000, MinimumLength = 30, ErrorMessage = "Message should be between {2} and {1} characters.")]
         [Display(Name = "And finally, your message")]
         public string Message { get; set; }
+
+        [JsonPropertyName("g-recaptcha-response")]
+        public string RecpatchaResponse { get; set; }
     }
 }

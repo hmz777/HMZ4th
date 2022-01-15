@@ -25,6 +25,14 @@ export function InitAnimation() {
     });
 }
 
+export function GetRecaptchaResponse() {
+    try {
+        return grecaptcha.getResponse();
+    } catch (e) {
+        return null;
+    }
+}
+
 export function Dispose() {
 
 }
