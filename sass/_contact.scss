@@ -1,4 +1,7 @@
 ﻿#contact-block {
+    display: flex;
+    flex-flow: row wrap;
+
     .content-article {
         width: 50%;
         margin-right: auto;
@@ -85,7 +88,7 @@
             }
 
             button[type=submit] {
-                padding: .7rem 3rem;
+                padding: 1rem 3rem;
                 border-radius: 1rem;
                 margin-left: auto;
                 background: white;
@@ -94,12 +97,13 @@
                 position: relative;
                 overflow: hidden;
                 z-index: 2;
-                transition: color 1s ease-in-out;
+                transition: color 2s ease-in-out;
                 margin-top: .5rem;
+                width: 100%;
 
                 &:after {
                     content: "";
-                    transition: transform 1s ease-in-out;
+                    transition: transform 2s ease-in-out;
                     background: $accentColor3;
                     position: absolute;
                     top: 0;
@@ -116,10 +120,28 @@
                     color: white;
 
                     &:after {
-                        transform: scale(300);
+                        transform: scale(1000);
                     }
                 }
             }
+        }
+
+        @include breakpoint($medium) {
+            width: 100%;
+        }
+    }
+
+    .contact-block-img-wrapper {
+        display: flex;
+        max-width: 50%;
+
+        @include breakpoint($medium) {
+            display: none;
+        }
+
+        svg {
+            max-width: 50%;
+            margin: 0 auto auto;
         }
     }
 }

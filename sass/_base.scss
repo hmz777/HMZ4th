@@ -1,5 +1,8 @@
-﻿* {
+﻿*, *:before, *:after {
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
 }
 
 html, body {
@@ -31,6 +34,10 @@ main {
     width: 75%;
     background: white;
     height: inherit;
+
+    @include breakpoint($large) {
+        width: 100%;
+    }
 }
 
 .content-block {
@@ -40,6 +47,10 @@ main {
     height: 100%;
     width: 100%;
     overflow-y: auto;
+
+    @include breakpoint($medium) {
+        padding: 2rem;
+    }
 }
 
 h1 {
