@@ -5,7 +5,7 @@
 
 <div class="notification-container @Status @NotificationMessageModel.NotificationType.ToString()">
     <i class="notification-icon las la @Icon la-2x"></i>
-    <p class="notification-message">@NotificationMessageModel.NotificationMessage</p>
+    <p class="notification-message">@((MarkupString)NotificationMessageModel.NotificationMessage)</p>
 </div>
 
 @code {
