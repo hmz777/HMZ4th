@@ -3,12 +3,37 @@
     flex-flow: row wrap;
     justify-content: space-between;
 
-    .work-card {
+    .content-article {
         display: inline-flex;
+        flex-flow: column wrap;
         width: 48%;
+        margin-bottom: 2rem;
+        position: relative;
+
+        &:hover {
+            .work-card {
+                .work-card-stats {
+                    transform: translateY(0);
+                }
+            }
+        }
+
+        @include breakpoint($medium) {
+            width: 100%;
+        }
+    }
+
+    .work-card {
 
         .work-card-head {
-            font-weight: bold
+            border-bottom-right-radius: 1rem;
+            align-self: flex-start;
+
+            h2 {
+                font-size: 2rem;
+                text-shadow: none;
+                margin: 0 0 .5rem;
+            }
         }
 
         .work-card-desc {
@@ -18,13 +43,45 @@
             display: flex;
             flex-flow: row wrap;
 
-            work-card-tech-item {
-                padding: .5rem;
+            .work-card-tech-item {
+                padding: .2rem 1rem;
                 border-radius: 1rem;
+                background: $accentColor3;
+                color: white;
 
                 &:not(:last-of-type) {
-                    margin-right: .5rem
+                    margin-right: .2rem
                 }
+            }
+        }
+
+        .work-card-stats {
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: .5rem 1rem;
+            background: $accentColor3;
+            border-bottom-left-radius: 1rem;
+            color: white;
+            transition: transform .3s $mainEasing;
+            transform: translateY(-100%);
+
+            .work-stat {
+                &:not(:last-of-type) {
+                    margin-right: .5rem;
+                }
+
+                .las {
+                    font-size: 1.3rem;
+                    margin-right: .2rem;
+                }
+            }
+
+            a {
+                color: white;
             }
         }
     }

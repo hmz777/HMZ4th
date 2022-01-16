@@ -14,3 +14,19 @@ input, textarea {
 textarea {
     resize: vertical;
 }
+
+hr {
+    margin: 1rem auto;
+    height: .3rem;
+    background: lightgray;
+    border-radius: 1rem;
+    border: none;
+
+    &.small-line {
+        width: 30%;
+    }
+
+    &.large-line {
+        width: 70%;
+    }
+}
