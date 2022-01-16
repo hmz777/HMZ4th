@@ -79,7 +79,7 @@ namespace HMZ4th.Models
         public License license { get; set; }
         public bool allow_forking { get; set; }
         public bool is_template { get; set; }
-        public object[] topics { get; set; }
+        public string[] topics { get; set; }
         public string visibility { get; set; }
         public int forks { get; set; }
         public int open_issues { get; set; }

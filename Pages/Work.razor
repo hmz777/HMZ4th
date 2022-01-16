@@ -6,9 +6,12 @@
         <h1>Work</h1>
     </header>
     <article class="work-card-container">
-        @for (var i = 0; i < 8; i++)
+        @if (WorkCards != null)
         {
-            <WorkCard />
+            foreach (var item in WorkCards)
+            {
+                <WorkCard WorkProjectModel="item" />
+            }
         }
     </article>
 </article>

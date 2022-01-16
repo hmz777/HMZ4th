@@ -14,6 +14,7 @@ namespace HMZ4th.Models
         public int stargazers_count { get; set; }
         public int watchers_count { get; set; }
         public int forks_count { get; set; }
+        public string html_url { get; set; }
         public bool IsStaticProject { get; set; }
     }
 }
