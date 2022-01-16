@@ -15,9 +15,12 @@
     <None Include="Shared\Contact\LabelCustom.razor" />
     <None Include="Shared\Dashboard\DashboardBlock.razor" />
     <None Include="Shared\Notifications\NotificationMessage.razor" />
+    <None Include="Shared\Work\WorkCard.razor" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.1" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
