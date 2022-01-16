@@ -7,7 +7,7 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HMZ4th.Extensions
+namespace HMZ4th.Helpers.Extensions
 {
     public static class AppExtensions
     {
