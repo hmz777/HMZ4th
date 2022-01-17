@@ -37,7 +37,7 @@ namespace HMZ4th.Services
             {
                 var cacheVal = cacheEntry.GetEntry();
 
-                if (cacheEntry is T)
+                if (cacheVal is T)
                 {
                     value = (T)cacheVal;
                     return true;
