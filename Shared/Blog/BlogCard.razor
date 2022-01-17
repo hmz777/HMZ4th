@@ -1,0 +1,28 @@
+﻿<article class="content-article">
+    <article class="blog-card">
+        <a href="/blog/post/@LinkFragment">
+            <img class="blog-card-img" src="/img/blog/@Image" alt="@Title" />
+            <article class="blog-card-det">
+                <header class="blog-card-head">
+                    <div class="blog-card-info">
+                        <span class="blog-tag"><i class="las la-tag"></i> @MainTag</span>
+                        <span class="blog-date"><i class="las la-calendar"></i> @(Date.ToString("dd MMMM, yyyy"))</span>
+                    </div>
+                    <h2 title="@Title">@Title</h2>
+                </header>
+                <p class="blog-card-desc" title="@Description">
+                    @Description
+                </p>
+            </article>
+        </a>
+    </article>
+</article>
+
+@code {
+    public string Title { get; set; }
+    public string Description { get; set; }
+    public string MainTag { get; set; }
+    public DateTimeOffset Date { get; set; }
+    public string LinkFragment { get; set; }
+    public string Image { get; set; }
+}
