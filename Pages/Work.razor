@@ -8,7 +8,7 @@
     <article class="work-card-container">
         @if (WorkCards != null)
         {
-            foreach (var item in WorkCards)
+            foreach (var item in WorkCards.Where(w => w.fork == false))
             {
                 <WorkCard WorkProjectModel="item" />
             }
