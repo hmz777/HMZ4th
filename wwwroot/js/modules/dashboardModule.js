@@ -23,7 +23,7 @@ export function Stagger() {
         translateY: [50, 0],
         opacity: [0, 1],
         easing: "easeOutQuint",
-        duration: 1000,
+        duration: GlobalOptions.HeaderAnimationDuration,
         delay: anime.stagger(100, { start: 100 }),
         autoPlay: true,
         loop: false

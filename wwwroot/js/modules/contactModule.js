@@ -16,7 +16,8 @@ export function InitAnimation() {
 
     anime({
         targets: '.form-el',
-        translateY: [100, 0],
+        opacity: [0, 1],
+        translateY: [50, 0],
         easing: "easeOutQuint",
         duration: GlobalOptions.HeaderAnimationDuration,
         autoPlay: true,
