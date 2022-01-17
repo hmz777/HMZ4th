@@ -3,7 +3,7 @@
     flex-flow: row wrap;
 
     .content-article {
-        width: 50%;
+        width: 60%;
         margin-right: auto;
 
         #contact-form {
@@ -133,7 +133,7 @@
 
     .contact-block-img-wrapper {
         display: flex;
-        max-width: 50%;
+        max-width: 40%;
 
         @include breakpoint($medium) {
             display: none;
