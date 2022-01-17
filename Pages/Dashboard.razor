@@ -6,7 +6,7 @@
         <h1>Dashboard</h1>
     </header>
     <div class="dashboard-article-body">
-        @if (DashboardGitHubWrapper.DataIsSet)
+        @if (DashboardGitHubWrapper != null)
         {
             <DashboardBlock Name="GitHub Total Commits" Value="@DashboardGitHubWrapper.CommitSearchModel.total_count" />
             <DashboardBlock Name="GitHub Total Stars" Value="@DashboardGitHubWrapper.RepoModels.Sum(r => r.stargazers_count)" />
