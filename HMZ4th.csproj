@@ -29,6 +29,7 @@
   <ItemGroup>
     <Folder Include="Shared\Skills\" />
     <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\img\blog\" />
   </ItemGroup>
 
 </Project>
