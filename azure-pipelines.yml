@@ -1,0 +1,55 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+  branches:
+    exclude:
+    - master
+  paths:
+    exclude:
+    - azure-pipelines.yml
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
+  workingDirectory: HMZ-Software
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'run'
+    projects: 'MarkupCompiler/*.csproj'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    zipAfterPublish: false
+    modifyOutputPath: false
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    workingDirectory: HMZ-Software
+    
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'Dist'
+    publishLocation: 'Container'
+
+- script: |
+    git config --global user.name "$(github_name)"
+    git config --global user.email "$(github_email)"
+    git config --global core.autocrlf false
+    cd $(Build.ArtifactStagingDirectory)/wwwroot
+    git init
+    git checkout -b gh-pages
+    git add -A
+    git commit -m "Create build $(Build.BuildId)"
+    git push -f https://$(github_pat)@github.com/hmz777/Z-Blog.git gh-pages
+  displayName: 'Publish to GitHub Pages'
