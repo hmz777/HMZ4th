@@ -18,9 +18,10 @@ namespace MarkupCompiler
                 string Root = null;
 
 #if DEBUG
-                Root = Path.GetFullPath(Path.Combine(Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName, @"..\..\..\..\", @"HMZ-Software\wwwroot\Blog"));
+                Root = Path.GetFullPath(Path.Combine(Directory
+                    .GetParent(Assembly.GetExecutingAssembly().Location).FullName, @"..\..\..\..\", @"BlogApp\wwwroot\Blog"));
 #else
-                Root = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"HMZ-Software\wwwroot\Blog"));
+                Root = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"BlogApp\wwwroot\Blog"));
 #endif
                 //Here we used the GetCurrentDirectory because the working directory is set via Azure Pipelines.
 

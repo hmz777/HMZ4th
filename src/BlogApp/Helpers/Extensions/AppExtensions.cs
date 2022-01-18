@@ -1,4 +1,4 @@
-﻿using HMZ4th.Services;
+﻿using BlogApp.Services;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HMZ4th.Helpers.Extensions
+namespace BlogApp.Helpers.Extensions
 {
     public static class AppExtensions
     {

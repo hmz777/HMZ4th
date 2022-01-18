@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HMZ4th.Services
+namespace BlogApp.Services
 {
     public class TransitionPageService
     {

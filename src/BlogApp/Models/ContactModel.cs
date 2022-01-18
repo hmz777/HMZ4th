@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace HMZ4th.Models
+namespace BlogApp.Models
 {
     public class ContactModel
     {

@@ -1,4 +1,4 @@
-﻿namespace HMZ4th.Models
+﻿namespace BlogApp.Models
 {
     public enum NotificationType
     {

@@ -1,4 +1,4 @@
-﻿using HMZ4th.Services;
+﻿using BlogApp.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HMZ4th.Shared
+namespace BlogApp.Shared
 {
     public class TransitionPageBase<T> : ComponentBase, IAsyncDisposable where T : class
     {

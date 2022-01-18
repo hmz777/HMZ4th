@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 
-namespace HMZ4th.Services
+namespace BlogApp.Services
 {
     public class AppStateContainer : IStateContainer
     {

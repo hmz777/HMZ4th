@@ -1,11 +1,11 @@
-﻿using HMZ4th.Models;
+﻿using BlogApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HMZ4th.Services
+namespace BlogApp.Services
 {
     public class NotificationService
     {

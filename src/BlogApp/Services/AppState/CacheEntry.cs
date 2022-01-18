@@ -1,4 +1,4 @@
-﻿namespace HMZ4th.Services
+﻿namespace BlogApp.Services
 {
     public class CacheEntry
     {

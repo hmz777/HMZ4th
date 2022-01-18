@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HMZ4th.Models
+namespace BlogApp.Models
 {
     public class DashboardGitHubWrapper
     {

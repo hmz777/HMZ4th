@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using HMZ4th.Helpers.Cache;
-using HMZ4th.Models;
-using HMZ4th.Services;
-using HMZ4th.Shared;
+using BlogApp.Helpers.Cache;
+using BlogApp.Models;
+using BlogApp.Services;
+using BlogApp.Shared;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
-namespace HMZ4th.Pages
+namespace BlogApp.Pages
 {
     public partial class Work : TransitionPageBase<Work>
     {

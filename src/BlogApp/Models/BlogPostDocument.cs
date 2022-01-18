@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HMZ4th.Models
+namespace BlogApp.Models
 {
     public class BlogPostDocument
     {

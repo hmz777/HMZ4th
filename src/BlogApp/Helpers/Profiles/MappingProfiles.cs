@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using HMZ4th.Models;
+using BlogApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HMZ4th.Helpers.Profiles
+namespace BlogApp.Helpers.Profiles
 {
     public class MappingProfiles
     {
