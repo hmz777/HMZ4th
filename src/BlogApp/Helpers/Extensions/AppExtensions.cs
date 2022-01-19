@@ -1,4 +1,5 @@
-﻿using BlogApp.Services;
+﻿using BlogApp.Models;
+using BlogApp.Services;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 using System.Collections.Generic;
@@ -44,6 +45,25 @@ namespace BlogApp.Helpers.Extensions
             transitionPageService.DoTransition(false);
 
             return res;
+        }
+
+        public static List<string> ConstructTags(this List<YamlMetadata> yamlMetadata)
+        {
+            if (yamlMetadata.Count == 0)
+                throw new Exception("Metadata is empty!");
+
+            List<string> Tags = new List<string>();
+
+            foreach (var post in yamlMetadata)
+            {
+                foreach (var tag in post.Tags)
+                {
+                    if (!Tags.Contains(tag))
+                        Tags.Add(tag);
+                }
+            }
+
+            return Tags;
         }
     }
 }
