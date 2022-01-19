@@ -1,1 +1,48 @@
 ﻿@page "/blog/post/{Url}"
+@inherits TransitionPageBase<BlogPost>
+
+<article class="post">
+    <header class="post-header" style="background-image:url(@($"/img/blog/posts/{BlogPostDocument.Yaml.ImageUrl}"))">
+        <article class="post-desc">
+            <div class="post-desc-info">
+                <span class="header-tag post-category">
+                    <i class="las la-tag"></i>
+                    @BlogPostDocument.Yaml.Category
+                </span>
+                <span class="header-tag">
+                    <i class="las la-calendar"></i>
+                    <time datetime="@BlogPostDocument.Yaml.Date.UtcDateTime">
+                        @BlogPostDocument.Yaml.Date.UtcDateTime.ToString("dd MMMM, yyyy")
+                    </time>
+                </span>
+            </div>
+            <h1 class="post-title">
+                @BlogPostDocument.Yaml.Title
+            </h1>
+        </article>
+    </header>
+    <article class="post-body">
+        @((MarkupString)BlogPostDocument.Html)
+    </article>
+    <article class="post-footer">
+        <div class="post-footer-info">
+            <span>
+                <i class="las la-calendar"></i>
+                <time datetime="@BlogPostDocument.Yaml.DateUpdated">
+                    @BlogPostDocument.Yaml.DateUpdated.UtcDateTime.ToString("dd MMMM, yyyy")
+                </time>
+            </span>
+        </div>
+        <div class="post-footer-tags">
+            @foreach (var tag in BlogPostDocument.Yaml.Tags)
+            {
+                <span class="post-tag">@tag</span>
+            }
+        </div>
+        <div class="post-footer-social">
+            <i class="lab la-facebook la-2x"></i>
+            <i class="lab la-twitter la-2x"></i>
+            <i class="lab la-linkedin la-2x"></i>
+        </div>
+    </article>
+</article>

@@ -22,7 +22,7 @@ namespace BlogApp.Pages
 
             PostsMetadata = await BlogPostProcessorService.ProcessPostsMetadataAsync();
 
-            if (PostsMetadata != null && PostsMetadata.Count() != 0)
+            if (PostsMetadata != null && PostsMetadata.Count != 0)
                 DataIsEmpty = false;
         }
     }
