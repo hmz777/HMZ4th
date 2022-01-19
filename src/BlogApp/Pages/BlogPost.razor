@@ -25,24 +25,37 @@
         @((MarkupString)BlogPostDocument.Html)
     </article>
     <article class="post-footer">
-        <div class="post-footer-info">
-            <span>
+        <div class="list-sec post-footer-info">
+            <span class="post-footer-info-tag">
                 <i class="las la-calendar"></i>
+                Last updated:
                 <time datetime="@BlogPostDocument.Yaml.DateUpdated">
                     @BlogPostDocument.Yaml.DateUpdated.UtcDateTime.ToString("dd MMMM, yyyy")
                 </time>
             </span>
         </div>
-        <div class="post-footer-tags">
+        <div class="list-sec post-footer-tags">
+            <i class="las la-tags"></i>
+            Tags:
             @foreach (var tag in BlogPostDocument.Yaml.Tags)
             {
-                <span class="post-tag">@tag</span>
+                <a href="#" class="post-tag">@tag</a>
             }
         </div>
-        <div class="post-footer-social">
-            <i class="lab la-facebook la-2x"></i>
-            <i class="lab la-twitter la-2x"></i>
-            <i class="lab la-linkedin la-2x"></i>
+        <div class="list-sec post-footer-social">
+            Share on:
+            <a href="#" class="anchor-facebook">
+                <i class="lab la-facebook la-2x"></i>
+                <span class="social-name">Facebook</span>
+            </a>
+            <a href="#" class="anchor-twitter">
+                <i class="lab la-twitter la-2x"></i>
+                <span class="social-name">Twitter</span>
+            </a>
+            <a href="#" class="anchor-linkedin">
+                <i class="lab la-linkedin la-2x"></i>
+                <span class="social-name">LinkedIn</span>
+            </a>
         </div>
     </article>
 </article>
