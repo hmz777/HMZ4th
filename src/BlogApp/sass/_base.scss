@@ -52,7 +52,7 @@ main {
     overflow-y: auto;
 
     @include breakpoint($medium) {
-        padding: 2rem;
+        padding: 1rem;
     }
 }
 

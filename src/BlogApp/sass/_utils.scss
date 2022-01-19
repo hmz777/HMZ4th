@@ -31,3 +31,9 @@
 .w-100 {
     width: 100%;
 }
+
+.list-sec {
+    &:not(:last-of-type) {
+        margin-bottom: 1rem;
+    }
+}
