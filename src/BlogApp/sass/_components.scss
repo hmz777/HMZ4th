@@ -142,3 +142,21 @@
         }
     }
 }
+
+#no-content {
+    display: flex;
+    flex-flow: column wrap;
+    width: 30%;
+
+    @include breakpoint($medium) {
+        width: 40%;
+    }
+
+    svg {
+        width: 100%
+    }
+
+    p {
+        margin: 1rem auto 0;
+    }
+}
