@@ -2,7 +2,7 @@
 
 namespace BlogApp.Services
 {
-    public class AppStateContainer : IStateContainer
+    public class AppStateContainer : IStateContainer, IDisposable
     {
         private ConcurrentDictionary<string, CacheEntry> _entries = new();
 
@@ -76,6 +76,12 @@ namespace BlogApp.Services
 
             entry = null;
             return false;
+        }
+
+        public void Dispose()
+        {
+            _entries.Clear();
+            _entries = null;
         }
     }
 }
