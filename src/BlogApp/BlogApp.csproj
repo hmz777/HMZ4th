@@ -31,12 +31,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.1" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+    <PackageReference Include="YamlDotNet" Version="11.2.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Shared\Skills\" />
     <Folder Include="wwwroot\css\" />
-    <Folder Include="wwwroot\img\blog\" />
   </ItemGroup>
 
 </Project>
