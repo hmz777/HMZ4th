@@ -30,7 +30,7 @@ namespace BlogApp.Pages
             {
                 LocalHttpClient = HttpClientFactory.CreateClient("Local");
 
-                using var doc = await LocalHttpClient.GetFromJsonAsync<JsonDocument>("/data/skills.json", CancellationTokenSource.Token);
+                using var doc = await LocalHttpClient.GetFromJsonAsync<JsonDocument>("/data/skills/skills.json", CancellationTokenSource.Token);
                 SkillsData = doc?.RootElement.GetProperty("Skills").Deserialize<Dictionary<string, string[]>>();
 
                 ActiveItem = SkillsData?.First().Key ?? "";
