@@ -43,6 +43,7 @@ main {
 }
 
 .content-block {
+    position: relative;
     display: flex;
     flex-flow: column wrap;
     padding: 2rem 4rem;
