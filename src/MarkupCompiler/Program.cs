@@ -19,7 +19,7 @@ namespace MarkupCompiler
 
 #if DEBUG
                 Root = Path.GetFullPath(Path.Combine(Directory
-                    .GetParent(Assembly.GetExecutingAssembly().Location).FullName, @"..\..\..\..\", @"BlogApp\wwwroot\Blog"));
+                    .GetParent(Assembly.GetExecutingAssembly().Location).FullName, @"..\..\..\..\", @"BlogApp\wwwroot\data\blog"));
 #else
                 Root = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"BlogApp\wwwroot\Blog"));
 #endif
@@ -33,11 +33,12 @@ namespace MarkupCompiler
                 Console.WriteLine("Building the Markdig pipeline and compiling posts if they exist...");
                 var PostDocuments = MarkupCompilerFactory.GetOrCreate().CompileMarkdown(Root);
 
-                string MainSiteDataPath = Path.Combine(Root, "Site");
+                string MainSiteDataPath = Path.Combine(Root, "site");
 
                 Console.WriteLine("Creating the necessary directories if they're not already created...");
-                Directory.CreateDirectory(Path.Combine(MainSiteDataPath, "Metadata"));
-                Directory.CreateDirectory(Path.Combine(MainSiteDataPath, "Site"));
+                Directory.CreateDirectory(Path.Combine(Root, "metadata"));
+                Directory.CreateDirectory(Path.Combine(Root, "site"));
+                Directory.CreateDirectory(Path.Combine(Root, "..", "..", "img", "blog", "posts"));
 
                 Console.WriteLine("Writing the compiled data to files in a form of .html and .yml...");
                 foreach (var Document in PostDocuments)
@@ -58,11 +59,13 @@ namespace MarkupCompiler
                 Console.WriteLine("Constructing blog metadata...");
                 MetadataTool.ConstructMetadata(Root, YamlMetadata);
 
+                var wwwroot = Path.Combine(Root, "../../");
+
                 Console.WriteLine("Building \"Robots.txt\"...");
-                Seo.ConstructRobots(Domain, YamlMetadata, Root.Substring(0, Root.LastIndexOf('\\') + 1));
+                Seo.ConstructRobots(Domain, YamlMetadata, wwwroot);
 
                 Console.WriteLine("Building \"Sitemap.xml\"...");
-                Seo.ConstructSitemap(Domain, YamlMetadata, Root.Substring(0, Root.LastIndexOf('\\') + 1));
+                Seo.ConstructSitemap(Domain, YamlMetadata, wwwroot);
 
             }
             catch (Exception ex)

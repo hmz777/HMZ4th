@@ -9,28 +9,37 @@ namespace MarkupCompiler.Tools
     {
         public static void CleanSite(string path)
         {
+            var metadata = Path.Combine(path, "metadata");
+            var site = Path.Combine(path, "site");
+
+            if (Directory.Exists(metadata) == false
+               || Directory.Exists(site) == false)
+            {
+                return;
+            }
+
             //Cleans The targeted folder from files and folders
-            foreach (var item in Directory.EnumerateDirectories(Path.Combine(path, "Metadata")))
+            foreach (var item in Directory.EnumerateDirectories(metadata))
             {
                 Directory.Delete(item);
             }
 
-            foreach (var item in Directory.EnumerateFiles(Path.Combine(path, "Metadata")))
+            foreach (var item in Directory.EnumerateFiles(metadata))
             {
                 File.Delete(item);
             }
 
-            foreach (var item in Directory.EnumerateDirectories(Path.Combine(path, "Site")))
+            foreach (var item in Directory.EnumerateDirectories(site))
             {
                 Directory.Delete(item);
             }
 
-            foreach (var item in Directory.EnumerateFiles(Path.Combine(path, "Site"), "*.html"))
+            foreach (var item in Directory.EnumerateFiles(site, "*.html"))
             {
                 File.Delete(item);
             }
 
-            foreach (var item in Directory.EnumerateFiles(Path.Combine(path, "Site"), "*.yml"))
+            foreach (var item in Directory.EnumerateFiles(site, "*.yml"))
             {
                 File.Delete(item);
             }

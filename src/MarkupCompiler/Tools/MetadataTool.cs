@@ -11,7 +11,7 @@ namespace MarkupCompiler.Tools
         {
             var JsonMetadata = JsonSerializer.Serialize(blogPostMetadata);
 
-            File.WriteAllText(Path.Combine(path, "Metadata", "Metadata.json"), JsonMetadata);
+            File.WriteAllText(Path.Combine(path, "metadata", "metadata.json"), JsonMetadata);
         }
     }
 }

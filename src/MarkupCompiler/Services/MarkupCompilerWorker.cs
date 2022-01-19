@@ -23,7 +23,7 @@ namespace MarkupCompiler.Services
 
         public IEnumerable<BlogPostDocument> CompileMarkdown(string Root)
         {
-            var PostDirectory = Path.Combine(Root, "Posts");
+            var PostDirectory = Path.Combine(Root, "posts");
 
             //Grab Markdown files
             var Paths = Directory.GetFiles(PostDirectory, "*.md");

@@ -15,26 +15,26 @@ namespace MarkupCompiler.Tools
 
             Robots += "User-Agent: *\n" +
                         "Disallow : /?\n" +
-                        "Disallow : /Blog?\n" +
-                        "Disallow : /Blog/Post?\n" +
-                        "Disallow : /Blog/Post\n" +
-                        "Disallow : /Search?\n" +
-                        "Disallow : /Site?\n" +
-                        "Disallow : /Terms?\n" +
-                        "Disallow : /Blog/Tags?\n";
+                        "Disallow : /blog?\n" +
+                        "Disallow : /blog/post?\n" +
+                        "Disallow : /blog/post\n" +
+                        "Disallow : /search?\n" +
+                        "Disallow : /site?\n" +
+                        "Disallow : /terms?\n" +
+                        "Disallow : /blog/tags?\n";
 
             foreach (var Post in BlogPostMetadata)
             {
                 if (Post.NoList)
                 {
-                    Robots += string.Format("Disallow : /Blog/Post/{0}\n", Post.FileName);
-                    Robots += string.Format("Disallow : /Blog/Post/{0}?\n", Post.FileName);
+                    Robots += string.Format("Disallow : /blog/post/{0}\n", Post.FileName);
+                    Robots += string.Format("Disallow : /blog/post/{0}?\n", Post.FileName);
                 }
             }
 
-            Robots += $"\nSitemap: {Domain}/Sitemap.xml";
+            Robots += $"\nsitemap: {Domain}/sitemap.xml";
 
-            File.WriteAllText(Output + "Robots.txt", Robots);
+            File.WriteAllText(Output + "robots.txt", Robots);
         }
 
         public static void ConstructSitemap(string Domain, IEnumerable<YamlMetadata> BlogPostMetadata, string Output)
@@ -147,7 +147,7 @@ namespace MarkupCompiler.Tools
 
             Sitemap.AppendChild(urlset);
 
-            Sitemap.Save(Output + "Sitemap.xml");
+            Sitemap.Save(Output + "sitemap.xml");
         }
     }
 }
