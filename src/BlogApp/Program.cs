@@ -19,4 +19,6 @@ builder.Services.AddHttpClient("External").AddHttpMessageHandler<HttpClientDeleg
 
 builder.Services.AddAutoMapper(System.Reflection.Assembly.GetExecutingAssembly());
 
+builder.Services.AddScoped<IBlogPostProcessorService, BlogPostProcessor>();
+
 await builder.Build().RunAsync();
