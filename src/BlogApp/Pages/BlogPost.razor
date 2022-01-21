@@ -1,61 +1,64 @@
-﻿@page "/blog/post/{Url}"
-@inherits TransitionPageBase<BlogPost>
+﻿@inherits TransitionPageBase<BlogPost>
+@page "/blog/post/{Url}"
 
-<article class="post">
-    <header class="post-header" style="background-image:url(@($"/img/blog/posts/{BlogPostDocument.Yaml.ImageUrl}"))">
-        <article class="post-desc">
-            <div class="post-desc-info">
-                <span class="header-tag post-category">
-                    <i class="las la-tag"></i>
-                    @BlogPostDocument.Yaml.Category
-                </span>
-                <span class="header-tag">
+@if (BlogPostDocument != null)
+{
+    <article class="post">
+        <header class="post-header" style="background-image:url(@($"/img/blog/posts/{BlogPostDocument.Yaml.ImageUrl}"))">
+            <article class="post-desc">
+                <div class="post-desc-info">
+                    <span class="header-tag post-category">
+                        <i class="las la-tag"></i>
+                        @BlogPostDocument.Yaml.Category
+                    </span>
+                    <span class="header-tag">
+                        <i class="las la-calendar"></i>
+                        <time datetime="@BlogPostDocument.Yaml.Date">
+                            @BlogPostDocument.Yaml.Date.ToString("dd MMMM, yyyy")
+                        </time>
+                    </span>
+                </div>
+                <h1 class="post-title">
+                    @BlogPostDocument.Yaml.Title
+                </h1>
+            </article>
+        </header>
+        <article class="post-body">
+            @((MarkupString)BlogPostDocument.Html)
+        </article>
+        <article class="post-footer">
+            <div class="list-sec post-footer-info">
+                <span class="post-footer-info-tag">
                     <i class="las la-calendar"></i>
-                    <time datetime="@BlogPostDocument.Yaml.Date.UtcDateTime">
-                        @BlogPostDocument.Yaml.Date.UtcDateTime.ToString("dd MMMM, yyyy")
+                    Last updated:
+                    <time datetime="@BlogPostDocument.Yaml.DateUpdated">
+                        @BlogPostDocument.Yaml.DateUpdated.ToString("dd MMMM, yyyy")
                     </time>
                 </span>
             </div>
-            <h1 class="post-title">
-                @BlogPostDocument.Yaml.Title
-            </h1>
+            <div class="list-sec post-footer-tags">
+                <i class="las la-tags"></i>
+                Tags:
+                @foreach (var tag in BlogPostDocument.Yaml.Tags)
+                {
+                    <a href="#" class="btn post-tag">@tag</a>
+                }
+            </div>
+            <div class="list-sec post-footer-social">
+                Share on:
+                <a href="#" class="btn anchor-facebook">
+                    <i class="lab la-facebook la-2x"></i>
+                    <span class="social-name">Facebook</span>
+                </a>
+                <a href="#" class="btn anchor-twitter">
+                    <i class="lab la-twitter la-2x"></i>
+                    <span class="social-name">Twitter</span>
+                </a>
+                <a href="#" class="btn anchor-linkedin">
+                    <i class="lab la-linkedin la-2x"></i>
+                    <span class="social-name">LinkedIn</span>
+                </a>
+            </div>
         </article>
-    </header>
-    <article class="post-body">
-        @((MarkupString)BlogPostDocument.Html)
     </article>
-    <article class="post-footer">
-        <div class="list-sec post-footer-info">
-            <span class="post-footer-info-tag">
-                <i class="las la-calendar"></i>
-                Last updated:
-                <time datetime="@BlogPostDocument.Yaml.DateUpdated">
-                    @BlogPostDocument.Yaml.DateUpdated.UtcDateTime.ToString("dd MMMM, yyyy")
-                </time>
-            </span>
-        </div>
-        <div class="list-sec post-footer-tags">
-            <i class="las la-tags"></i>
-            Tags:
-            @foreach (var tag in BlogPostDocument.Yaml.Tags)
-            {
-                <a href="#" class="post-tag">@tag</a>
-            }
-        </div>
-        <div class="list-sec post-footer-social">
-            Share on:
-            <a href="#" class="anchor-facebook">
-                <i class="lab la-facebook la-2x"></i>
-                <span class="social-name">Facebook</span>
-            </a>
-            <a href="#" class="anchor-twitter">
-                <i class="lab la-twitter la-2x"></i>
-                <span class="social-name">Twitter</span>
-            </a>
-            <a href="#" class="anchor-linkedin">
-                <i class="lab la-linkedin la-2x"></i>
-                <span class="social-name">LinkedIn</span>
-            </a>
-        </div>
-    </article>
-</article>
+}
