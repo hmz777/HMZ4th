@@ -37,3 +37,34 @@
         margin-bottom: 1rem;
     }
 }
+
+a:not(.side-link,.card-link,.btn) {
+    font-weight: bold;
+    position: relative;
+    color: $accentColor2;
+
+    &:after {
+        position: absolute;
+        content: "";
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: .2rem;
+        border-radius: 1rem;
+        background: $accentColor2;
+    }
+}
+
+blockquote {
+    padding: 1rem;
+    border-radius: 1rem;
+    background: white;
+    color: black;
+    border-left: 20px solid $accentColor2;
+    border-top: 4px solid $accentColor2;
+    border-right: 4px solid $accentColor2;
+    border-bottom: 4px solid $accentColor2;
+}
+
+ul {
+}
