@@ -19,8 +19,8 @@ namespace BlogApp.Models
         public string Description { get; set; }
         public string ImageUrl { get; set; }
         public string Url { get; set; }
-        public DateTimeOffset Date { get; set; }
-        public DateTimeOffset DateUpdated { get; set; }
+        public DateTime Date { get; set; }
+        public DateTime DateUpdated { get; set; }
         public string[] Tags { get; set; }
         public string FileName { get; set; }
         public bool NoList { get; set; }
