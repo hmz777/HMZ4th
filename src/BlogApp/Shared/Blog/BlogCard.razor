@@ -1,6 +1,6 @@
 ﻿<article class="content-article">
     <article class="blog-card">
-        <a href="/blog/post/@LinkFragment">
+        <a class="card-link" href="/blog/post/@LinkFragment">
             <img class="blog-card-img" src="/img/blog/posts/@Image" alt="@Title" />
             <article class="blog-card-det">
                 <header class="blog-card-head">
@@ -22,7 +22,7 @@
     [Parameter] public string Title { get; set; }
     [Parameter] public string Description { get; set; }
     [Parameter] public string MainTag { get; set; }
-    [Parameter] public DateTimeOffset Date { get; set; }
+    [Parameter] public DateTime Date { get; set; }
     [Parameter] public string LinkFragment { get; set; }
     [Parameter] public string Image { get; set; }
 }
