@@ -29,14 +29,15 @@
         //Throttle notification creation for everything to work as expected
         //when reporting faulty operations
         //could be adjusted later
-        await Task.Delay(300);
+        await Task.Delay(150);
 
         //Assign an id for the notification for two reasons:
         //identification and for the renderer to assign it as key for the rendered component
         notificationMessageModel.NotificationId = Guid.NewGuid().ToString();
         MessageQueue.Enqueue(notificationMessageModel);
         Status = "active";
-        StateHasChanged();
+
+        await InvokeAsync(() => { StateHasChanged(); });
     }
 
     void NotificationFinishedCallback(string notifId) //We'll try the queue for now

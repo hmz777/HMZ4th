@@ -20,15 +20,18 @@
         ComponentModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import",
             $"./js/modules/pageTransitionModule.js");
 
-        TransitionPageService.Transition += Transition;
+        TransitionPageService.Transition += OnTransitionHandler;
     }
 
-    async void Transition(bool state)
+    async void OnTransitionHandler(bool state)
     {
-        Active = state == false ? "" : "active";
-        StateHasChanged();
+        await InvokeAsync(async () =>
+       {
+           Active = state == false ? "" : "active";
+           StateHasChanged();
 
-        await Animate(state);
+           await Animate(state);
+       });
     }
 
     async Task Animate(bool state)
@@ -42,5 +45,7 @@
         {
             await ComponentModule.DisposeAsync();
         }
+
+        TransitionPageService.Transition -= OnTransitionHandler;
     }
 }
