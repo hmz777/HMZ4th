@@ -1,114 +1,116 @@
-﻿.blog-card-container {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+﻿#blog-block {
+    .blog-card-container {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
 
-    .content-article {
-        display: inline-flex;
-        flex-flow: column wrap;
-        width: 48%;
-        margin-bottom: 2rem;
-        position: relative;
-        padding: 0;
-        height: 20rem;
+        .content-article {
+            display: inline-flex;
+            flex-flow: column wrap;
+            width: 48%;
+            margin-bottom: 2rem;
+            position: relative;
+            padding: 0;
+            height: 20rem;
 
-        @include breakpoint($medium) {
-            width: 100%;
-        }
+            @include breakpoint($medium) {
+                width: 100%;
+            }
 
-        &:hover {
-            .blog-card {
-                .blog-card-det {
-                    transform: translateY(0);
+            &:hover {
+                .blog-card {
+                    .blog-card-det {
+                        transform: translateY(0);
+                    }
+
+                    a {
+                        &:after {
+                            opacity: 1;
+                        }
+                    }
                 }
+            }
+
+            .blog-card {
+                display: flex;
+                flex-flow: column wrap;
+                height: 100%;
 
                 a {
+                    position: relative;
+                    height: inherit;
+
                     &:after {
-                        opacity: 1;
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        background: rgb(0,0,0, 0.5);
+                        z-index: 2;
+                        opacity: 0;
+                        transition: opacity .3s $mainEasing;
                     }
                 }
-            }
-        }
 
-        .blog-card {
-            display: flex;
-            flex-flow: column wrap;
-            height: 100%;
-
-            a {
-                position: relative;
-                height: inherit;
-
-                &:after {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    bottom: 0;
+                .blog-card-img {
+                    position: relative;
+                    min-height: 70%;
+                    max-height: 100%;
                     width: 100%;
-                    background: rgb(0,0,0, 0.5);
-                    z-index: 2;
-                    opacity: 0;
-                    transition: opacity .3s $mainEasing;
+                    object-fit: cover;
                 }
-            }
 
-            .blog-card-img {
-                position: relative;
-                min-height: 70%;
-                max-height: 100%;
-                width: 100%;
-                object-fit: cover;
-            }
+                .blog-card-det {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 15rem;
+                    background: white;
+                    padding: 1rem;
+                    transition: transform .5s $mainEasing;
+                    transform: translateY(55%);
+                    border-top-left-radius: 1rem;
+                    border-top-right-radius: 1rem;
+                    border-top: 4px solid $accentColor3;
+                    z-index: 3;
+                    color: black;
 
-            .blog-card-det {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 15rem;
-                background: white;
-                padding: 1rem;
-                transition: transform .5s $mainEasing;
-                transform: translateY(55%);
-                border-top-left-radius: 1rem;
-                border-top-right-radius: 1rem;
-                border-top: 4px solid $accentColor3;
-                z-index: 3;
-                color: black;
+                    .blog-card-head {
+                        border-bottom-right-radius: 1rem;
+                        align-self: flex-start;
 
-                .blog-card-head {
-                    border-bottom-right-radius: 1rem;
-                    align-self: flex-start;
+                        .blog-card-info {
+                            margin-bottom: .5rem;
 
-                    .blog-card-info {
-                        margin-bottom: .5rem;
+                            .blog-tag, .blog-date {
+                                display: inline-block;
+                                padding: .3rem .6rem;
+                                color: white;
+                                background: $accentColor3;
+                                border-radius: 1rem;
+                            }
 
-                        .blog-tag, .blog-date {
-                            display: inline-block;
-                            padding: .3rem .6rem;
-                            color: white;
-                            background: $accentColor3;
-                            border-radius: 1rem;
+                            .blog-tag {
+                                font-weight: bold;
+                            }
                         }
 
-                        .blog-tag {
-                            font-weight: bold;
+                        h2 {
+                            font-size: 2rem;
+                            text-shadow: none;
+                            margin: 0 0 .5rem;
+                            word-break: break-word;
+                            @include text-overflow($lines:1);
                         }
                     }
 
-                    h2 {
-                        font-size: 2rem;
-                        text-shadow: none;
-                        margin: 0 0 .5rem;
-                        word-break: break-word;
-                        @include text-overflow($lines:1);
+                    .blog-card-desc {
+                        max-width: 100%;
+                        @include text-overflow($lines: 5);
                     }
-                }
-
-                .blog-card-desc {
-                    max-width: 100%;
-                    @include text-overflow($lines: 5);
                 }
             }
         }

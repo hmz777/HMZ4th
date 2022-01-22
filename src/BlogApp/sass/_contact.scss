@@ -1,6 +1,11 @@
 ﻿#contact-block {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
+
+    .contact-block-inner {
+        display: flex;
+        flex-flow: row wrap;
+    }
 
     .content-article {
         width: 60%;

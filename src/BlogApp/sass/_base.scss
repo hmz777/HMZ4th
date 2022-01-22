@@ -28,18 +28,44 @@ html, body {
     width: inherit;
     height: inherit;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
+
+    &.nav-active {
+        main {
+            margin-left: $sidebarWidth;
+
+            .content-block {
+                padding: 2rem 4rem;
+            }
+        }
+
+        .sidebar {
+            transform: translateX(0);
+        }
+    }
+
+    @include breakpoint($large) {
+
+        &.nav-active {
+            main {
+                margin-left: 0;
+            }
+
+            .sidebar {
+                transform: translateX(0);
+            }
+        }
+    }
 }
 
 main {
     z-index: 1;
-    width: 75%;
+    max-width: 100%;
     background: white;
     height: inherit;
-
-    @include breakpoint($large) {
-        width: 100%;
-    }
+    width: 100%;
+    margin-left: 0;
+    transition: margin .5s $mainEasing;
 }
 
 .content-block {
@@ -51,8 +77,12 @@ main {
     width: 100%;
     overflow-y: auto;
 
-    @include breakpoint($medium) {
-        padding: 1rem;
+    @include breakpoint(min-width $x-large-val) {
+        padding: 2rem 8rem;
+    }
+
+    @include breakpoint(min-width $xx-large-val) {
+        padding: 2rem 10rem;
     }
 }
 

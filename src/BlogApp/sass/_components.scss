@@ -4,7 +4,6 @@
 
     #Eyelid {
         transition: fill .3s ease;
-        /*fill: url(#grad1);*/
     }
 }
 
@@ -62,14 +61,30 @@
 }
 
 .article-header {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
     overflow: hidden;
     padding: 0 0 0 .5rem;
-    display: inline-block;
     word-break: break-all;
     margin: 1rem 0 2rem;
 
     h1 {
         margin: 0;
+    }
+
+    .header-links {
+
+        .header-link {
+            display: inline-block;
+            text-align: center;
+            @include shadow-btn;
+
+            &:not(:last-of-type) {
+                margin-right: .5rem;
+            }
+        }
     }
 }
 
@@ -163,5 +178,90 @@
 
     p {
         margin: 1rem auto 0;
+    }
+}
+
+.sidebar-toggle {
+    position: fixed;
+    top: 1.5rem;
+    left: 2rem;
+    transition: transform .5s $mainEasing;
+    @include shadow-btn($padding:.5rem,$activeEffect:false);
+    z-index: 2000;
+
+    &.nav-active {
+        transform: translateX(15.5rem);
+    }
+
+    .sandwich-btn {
+        height: 1.5rem;
+        display: flex;
+
+        .sandwich-inner {
+            position: relative;
+            margin: auto;
+
+            &, &:before, &:after {
+                display: block;
+                background: black;
+                height: .25rem;
+                border-radius: 1rem;
+                width: 2rem;
+                transition: transform .3s $mainEasing;
+            }
+
+            &:before {
+                position: absolute;
+                content: "";
+                left: 0;
+                top: -10px;
+                transition: top .3s $mainEasing .12s,opacity .3s $mainEasing;
+            }
+
+            &:after {
+                position: absolute;
+                content: "";
+                left: 0;
+                bottom: -10px;
+                transition: bottom .3s $mainEasing .12s,transform .3s $mainEasing;
+            }
+        }
+    }
+
+    &:hover {
+        .sandwich-btn {
+            .sandwich-inner {
+                transform: rotate(180deg);
+
+                &:before {
+                    transform: translate3d(-8px,3px,0) rotate(-45deg) scaleX(0.7);
+                }
+
+                &:after {
+                    transform: translate3d(-8px,-3px,0) rotate(45deg) scaleX(0.7);
+                }
+            }
+        }
+    }
+
+    &.nav-active {
+        .sandwich-btn {
+            .sandwich-inner {
+                transition: transform .3s $mainEasing .12s;
+                transform: rotate(45deg);
+
+                &:before {
+                    transition: top .3s $mainEasing,opacity .3s $mainEasing .12s;
+                    top: 0;
+                    opacity: 0;
+                }
+
+                &:after {
+                    transition: bottom .3s $mainEasing,transform .3s $mainEasing .12s;
+                    bottom: 0;
+                    transform: rotate(-90deg);
+                }
+            }
+        }
     }
 }

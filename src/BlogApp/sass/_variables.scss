@@ -15,6 +15,13 @@ $large: max-width 1199px;
 $x-large: max-width 1399px;
 $xx-large: min-width 1400px;
 
+$x-small-val: 575px;
+$small-val: 767px;
+$medium-val: 991px;
+$large-val: 1199px;
+$x-large-val: 1399px;
+$xx-large-val: 1400px;
+
 /*Colors*/
 $accentColor1: #190061;
 $accentColor2: #240090;
@@ -39,6 +46,7 @@ $progressBarBackColor: white;
 $pBColor: white;
 
 /*Sidebar*/
+$sidebarWidth: 22rem;
 $sidebarBorderColor: $accentColor2;
 $sidebarBorderThickness: .2rem;
 $sidebarLinkColor: white;

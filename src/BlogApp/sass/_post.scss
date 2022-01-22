@@ -16,10 +16,6 @@
         background-repeat: no-repeat;
         box-shadow: -15px -15px 0px 0px $accentColor1;
 
-        @include breakpoint($medium) {
-            top: -1rem;
-        }
-
         .post-desc {
             background: $accentColor2;
             color: black;
@@ -79,7 +75,6 @@
         box-shadow: 15px 15px 0px 0px $accentColor1;
 
         @include breakpoint($medium) {
-            bottom: -1rem;
             width: 100%;
             border-top-left-radius: 1rem;
             border-left: 4px solid $accentColor2;

@@ -27,3 +27,33 @@
         opacity: 0;
     }
 }
+
+@keyframes sandwich-1 {
+    0% {
+        transform: translate(0, 250%);
+    }
+
+    100% {
+        transform: translate(0, 250%) rotate(-135deg);
+    }
+}
+
+@keyframes sandwich-2 {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes sandwich-3 {
+    0% {
+        transform: translate(0, 250%);
+    }
+
+    100% {
+        transform: translate(0, 250%) rotate(45deg);
+    }
+}
