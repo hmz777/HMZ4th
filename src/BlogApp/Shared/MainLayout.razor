@@ -1,8 +1,7 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
+<div class="page @ToggleState">
     <Sidebar />
-
     <main>
         <article class="content-block">
             @Body
@@ -10,4 +9,19 @@
     </main>
     <NotificationContainer />
     <PageTransition />
+
+    <button class="sidebar-toggle @ToggleState" @onclick="ToggleSidebar" type="button">
+        <div class="sandwich-btn">
+            <div class="sandwich-inner"></div>
+        </div>
+    </button>
 </div>
+
+@code {
+    string ToggleState = "nav-active";
+
+    void ToggleSidebar()
+    {
+        ToggleState = ToggleState == "nav-active" ? "" : "nav-active";
+    }
+}
