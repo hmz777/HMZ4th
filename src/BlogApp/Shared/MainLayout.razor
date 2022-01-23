@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@implements IDisposable
 
 <div class="page @ToggleState">
     <Sidebar />
@@ -18,10 +19,44 @@
 </div>
 
 @code {
-    string ToggleState = "nav-active";
+    [Inject] IJSRuntime JSRuntime { get; set; }
+    public IJSObjectReference SidebarModule { get; set; }
+    DotNetObjectReference<MainLayout>? compRef;
+
+    string ToggleState = "";
+
+    protected async override Task OnInitializedAsync()
+    {
+        SidebarModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import",
+            $"./js/modules/sidebarModule.js");
+    }
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender && SidebarModule != null)
+        {
+            compRef = DotNetObjectReference.Create(this);
+            await SidebarModule.InvokeVoidAsync("InitHandler", compRef);
+        }
+    }
 
     void ToggleSidebar()
     {
         ToggleState = ToggleState == "nav-active" ? "" : "nav-active";
+    }
+
+    [JSInvokable]
+    public void HideSidebar()
+    {
+        if (ToggleState == "nav-active")
+        {
+            ToggleState = "";
+            StateHasChanged();
+        }
+    }
+
+    public void Dispose()
+    {
+        compRef?.Dispose();
     }
 }
