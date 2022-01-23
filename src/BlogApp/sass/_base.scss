@@ -33,10 +33,6 @@ html, body {
     &.nav-active {
         main {
             margin-left: $sidebarWidth;
-
-            .content-block {
-                padding: 2rem 4rem;
-            }
         }
 
         .sidebar {
@@ -66,24 +62,19 @@ main {
     width: 100%;
     margin-left: 0;
     transition: margin .5s $mainEasing;
+    overflow-y: auto;
 }
 
 .content-block {
     position: relative;
     display: flex;
     flex-flow: column wrap;
-    padding: 2rem 4rem;
+    padding: 1rem;
+    margin-left: auto;
+    margin-right: auto;
     height: 100%;
-    width: 100%;
-    overflow-y: auto;
-
-    @include breakpoint(min-width $x-large-val) {
-        padding: 2rem 8rem;
-    }
-
-    @include breakpoint(min-width $xx-large-val) {
-        padding: 2rem 10rem;
-    }
+    max-width: 75rem;
+    width: 85%;
 }
 
 h1 {

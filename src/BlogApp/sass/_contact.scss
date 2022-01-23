@@ -27,71 +27,6 @@
                 color: black;
             }
 
-            .validation-message {
-                display: block;
-                margin-bottom: 1rem;
-                color: black;
-            }
-
-            .form-input-wrapper {
-                position: relative;
-                display: flex;
-                flex-flow: column wrap;
-                align-items: flex-start;
-                padding: 1rem 0;
-                margin-bottom: .5rem;
-                width: 100%;
-                max-width: 100%;
-
-                label {
-                    display: inline-block;
-                    position: absolute;
-                    left: 0rem;
-                    top: -.5rem;
-                    transform: translate(1rem,2.7rem);
-                    font-size: .9rem;
-                    transition: all $easingDuration $mainEasing;
-                    pointer-events: none;
-                }
-
-                .validation-message {
-                    display: inline-block;
-                    position: absolute;
-                    right: 0;
-                    bottom: -.5rem;
-                    color: white;
-                    background: red;
-                    border-radius: 2rem;
-                    padding: .5rem 1rem;
-                    color: white;
-                    font-size: .9rem;
-                    animation: TransDown .3s $mainEasing forwards;
-                }
-
-                .form-input {
-                    width: 100%;
-                    padding: 1rem;
-                    border-radius: 1rem;
-                    border: .25rem solid lightgray;
-
-                    &:focus {
-                        border-color: gray;
-                    }
-
-                    &:focus + label, &:not(:placeholder-shown) + label {
-                        transform: translate(0,0) scale(0.9);
-                        background: $accentColor3;
-                        border-radius: 2rem;
-                        padding: .5rem 1rem;
-                        color: white;
-                    }
-
-                    &.invalid {
-                        border-color: red;
-                    }
-                }
-            }
-
             button[type=submit] {
                 padding: 1rem 3rem;
                 border-radius: 1rem;
@@ -147,6 +82,66 @@
         svg {
             max-width: 50%;
             margin: 0 auto auto;
+        }
+    }
+}
+
+.form-input-wrapper {
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
+    padding: 1rem 0;
+    margin-bottom: .5rem;
+    width: 100%;
+    max-width: 100%;
+
+    label {
+        display: inline-block;
+        position: absolute;
+        left: 0rem;
+        top: -.5rem;
+        transform: translate(1rem,2.7rem);
+        font-size: .9rem;
+        transition: all $easingDuration $mainEasing;
+        pointer-events: none;
+    }
+
+    .validation-message {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        bottom: -.5rem;
+        color: white;
+        background: red;
+        border-radius: 2rem;
+        padding: .5rem 1rem;
+        color: white;
+        font-size: .9rem;
+        animation: TransDown .3s $mainEasing forwards;
+        margin-bottom: 1rem;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 1rem;
+        border: .25rem solid lightgray;
+
+        &:focus {
+            border-color: gray;
+        }
+
+        &:focus + label, &:not(:placeholder-shown) + label {
+            transform: translate(0,0) scale(0.9);
+            background: $accentColor3;
+            border-radius: 2rem;
+            padding: .5rem 1rem;
+            color: white;
+        }
+
+        &.invalid {
+            border-color: red;
         }
     }
 }

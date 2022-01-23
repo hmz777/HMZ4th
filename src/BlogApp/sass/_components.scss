@@ -76,6 +76,10 @@
 
     .header-links {
 
+        @include breakpoint($x-small) {
+            margin-top: 2rem;
+        }
+
         .header-link {
             display: inline-block;
             text-align: center;
@@ -183,14 +187,14 @@
 
 .sidebar-toggle {
     position: fixed;
-    top: 1.5rem;
-    left: 2rem;
+    top: 1rem;
+    left: 1rem;
     transition: transform .5s $mainEasing;
     @include shadow-btn($padding:.5rem,$activeEffect:false);
     z-index: 2000;
 
     &.nav-active {
-        transform: translateX(15.5rem);
+        /* transform: translateX($sidebarWidth);*/
     }
 
     .sandwich-btn {
@@ -214,7 +218,7 @@
                 position: absolute;
                 content: "";
                 left: 0;
-                top: -10px;
+                top: -0.6rem;
                 transition: top .3s $mainEasing .12s,opacity .3s $mainEasing;
             }
 
@@ -222,7 +226,7 @@
                 position: absolute;
                 content: "";
                 left: 0;
-                bottom: -10px;
+                bottom: -0.6rem;
                 transition: bottom .3s $mainEasing .12s,transform .3s $mainEasing;
             }
         }
@@ -234,11 +238,11 @@
                 transform: rotate(180deg);
 
                 &:before {
-                    transform: translate3d(-8px,3px,0) rotate(-45deg) scaleX(0.7);
+                    transform: translate3d(-0.5rem,0.2rem,0) rotate(-45deg) scaleX(0.7);
                 }
 
                 &:after {
-                    transform: translate3d(-8px,-3px,0) rotate(45deg) scaleX(0.7);
+                    transform: translate3d(-0.5rem,-0.2rem,0) rotate(45deg) scaleX(0.7);
                 }
             }
         }

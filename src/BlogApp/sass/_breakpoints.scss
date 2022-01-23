@@ -1,0 +1,5 @@
+﻿html, body {
+    @include breakpoint($x-small) {
+        font-size: 12px;
+    }
+}
