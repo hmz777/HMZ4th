@@ -9,7 +9,7 @@
             <a class="header-link" href="/blog/tags">Tags</a>
         </div>
     </header>
-    <div class="blog-card-container">
+    <article class="blog-card-container">
         @if (DataIsEmpty == false)
         {
             foreach (var post in PostsMetadata)
@@ -26,5 +26,5 @@
         {
             <NoContent Message="It's empty in here!" />
         }
-    </div>
+    </article>
 </article>
