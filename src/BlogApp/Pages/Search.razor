@@ -1,0 +1,45 @@
+﻿@inherits TransitionPageBase<Search>
+@using BlogApp.Shared.Contact
+@using BlogApp.Models
+@page "/blog/search/{SearchTerm}"
+@page "/blog/search"
+
+<article id="search-block">
+    <header class="article-header">
+        <h1>Search Posts</h1>
+    </header>
+    <article class="content-article">
+        <div class="search-cards-container">
+            <div class="form-input-wrapper form-el">
+                <input placeholder=" "
+                       class="form-input"
+                       type="text"
+                       @oninput="@ProcessSearch"
+                       value="@_searchTerm" />
+                <label>Search</label>
+            </div>
+            <div class="search-res-container">
+                @if (_hasResults)
+                {
+                    <span class="status">@SearchResults.Count Result(s) found</span>
+                    foreach (var item in SearchResults)
+                    {
+                        <a href="@($"blog/post/{item.Url}")" class="btn search-result-item">
+                            <div class="content">
+                                <span class="title">
+                                    @item.Title
+                                </span>
+                                <p class="description">
+                                    @item.Description
+                                </p>
+                            </div>
+                            <div class="metadata">
+                                <time datetime="@item.DateUpdated">@item.DateUpdated.ToString("dd MMM, yyyy")</time>
+                            </div>
+                        </a>
+                    }
+                }
+            </div>
+        </div>
+    </article>
+</article>
