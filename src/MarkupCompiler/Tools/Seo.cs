@@ -27,8 +27,8 @@ namespace MarkupCompiler.Tools
             {
                 if (Post.NoList)
                 {
-                    Robots += string.Format("Disallow : /blog/post/{0}\n", Post.FileName);
-                    Robots += string.Format("Disallow : /blog/post/{0}?\n", Post.FileName);
+                    Robots += string.Format("Disallow : /blog/post/{0}\n", Post.Url);
+                    Robots += string.Format("Disallow : /blog/post/{0}?\n", Post.Url);
                 }
             }
 
@@ -129,7 +129,7 @@ namespace MarkupCompiler.Tools
             {
                 XmlElement url = Sitemap.CreateElement("url", "http://www.sitemaps.org/schemas/sitemap/0.9");
                 XmlElement loc = Sitemap.CreateElement("loc", "http://www.sitemaps.org/schemas/sitemap/0.9");
-                loc.InnerText = string.Format("{0}/Blog/Post/{1}", Domain, Post.FileName);
+                loc.InnerText = string.Format("{0}/Blog/Post/{1}", Domain, Post.Url);
                 XmlElement mod = Sitemap.CreateElement("lastmod", "http://www.sitemaps.org/schemas/sitemap/0.9");
                 mod.InnerText = Post.DateUpdated.ToString("yyyy-MM-dd");
                 XmlElement changefreq = Sitemap.CreateElement("changefreq", "http://www.sitemaps.org/schemas/sitemap/0.9");

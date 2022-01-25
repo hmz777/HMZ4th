@@ -63,11 +63,6 @@ namespace MarkupCompiler.Services
                     htmlRenderer.Render(Document);
                     stringWriter.Flush();
 
-                    string FileName = System.IO.Path.GetFileName(Path);
-                    FileName = FileName.Remove(FileName.LastIndexOf('.'));
-
-                    yamlMetadata.FileName = FileName;
-
                     Docs.Add(new BlogPostDocument { Yaml = yamlMetadata, Markdown = stringWriter.ToString() });
                 }
             }

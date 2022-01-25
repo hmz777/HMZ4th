@@ -21,7 +21,6 @@ namespace MarkupCompiler.Models
         public DateTime Date { get; set; }
         public DateTime DateUpdated { get; set; }
         public string[] Tags { get; set; }
-        public string FileName { get; set; }
         public bool NoList { get; set; }
     }
 }

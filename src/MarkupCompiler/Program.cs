@@ -43,12 +43,12 @@ namespace MarkupCompiler
                 Console.WriteLine("Writing the compiled data to files in a form of .html and .yml...");
                 foreach (var Document in PostDocuments)
                 {
-                    using (StreamWriter markdownStreamWriter = File.CreateText(Path.Combine(MainSiteDataPath, Document.Yaml.FileName) + ".html"))
+                    using (StreamWriter markdownStreamWriter = File.CreateText(Path.Combine(MainSiteDataPath, Document.Yaml.Url) + ".html"))
                     {
                         markdownStreamWriter.Write(Document.Markdown);
                     }
 
-                    using (StreamWriter yamlStreamWriter1 = File.CreateText(Path.Combine(MainSiteDataPath, Document.Yaml.FileName) + ".yml"))
+                    using (StreamWriter yamlStreamWriter1 = File.CreateText(Path.Combine(MainSiteDataPath, Document.Yaml.Url) + ".yml"))
                     {
                         yamlStreamWriter1.Write(YamlTools.SerializeYaml(Document.Yaml));
                     }
