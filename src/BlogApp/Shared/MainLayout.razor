@@ -40,9 +40,11 @@
         }
     }
 
-    void ToggleSidebar()
+    async Task ToggleSidebar()
     {
         ToggleState = ToggleState == "nav-active" ? "" : "nav-active";
+        if (ToggleState == "nav-active")
+            await SidebarModule.InvokeVoidAsync("InitAnimation");
     }
 
     [JSInvokable]
