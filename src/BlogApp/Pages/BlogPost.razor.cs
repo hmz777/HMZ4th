@@ -2,11 +2,7 @@
 using BlogApp.Services;
 using BlogApp.Shared;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.JSInterop;
 
 namespace BlogApp.Pages
 {
@@ -21,7 +17,18 @@ namespace BlogApp.Pages
         {
             await base.OnInitializedAsync();
 
-            BlogPostDocument = await BlogPostProcessorService.ProcessPostAsync(Url);
+            if (!string.IsNullOrWhiteSpace(Url))
+            {
+                BlogPostDocument = await BlogPostProcessorService.ProcessPostAsync(Url);
+            }
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await base.OnAfterRenderAsync(firstRender);
+
+            if (!firstRender && PageModule != null)
+                await PageModule.InvokeVoidAsync("HighlightCode");
         }
     }
 }

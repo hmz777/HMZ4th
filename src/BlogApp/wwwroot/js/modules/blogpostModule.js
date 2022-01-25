@@ -17,6 +17,10 @@ export function InitAnimation() {
     });
 }
 
+export function HighlightCode() {
+    Prism.highlightAllUnder(document.querySelector(".post-body"));
+}
+
 export function Dispose() {
 
 }
