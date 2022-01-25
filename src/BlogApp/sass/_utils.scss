@@ -54,17 +54,3 @@ a:not(.side-link,.card-link,.btn) {
         background: $accentColor2;
     }
 }
-
-blockquote {
-    padding: 1rem;
-    border-radius: 1rem;
-    background: white;
-    color: black;
-    border-left: 20px solid $accentColor2;
-    border-top: 4px solid $accentColor2;
-    border-right: 4px solid $accentColor2;
-    border-bottom: 4px solid $accentColor2;
-}
-
-ul {
-}
