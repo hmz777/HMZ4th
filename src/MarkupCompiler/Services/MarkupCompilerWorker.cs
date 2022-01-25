@@ -63,7 +63,7 @@ namespace MarkupCompiler.Services
                     htmlRenderer.Render(Document);
                     stringWriter.Flush();
 
-                    string FileName = Path.Substring(Path.LastIndexOf('\\') + 1);
+                    string FileName = System.IO.Path.GetFileName(Path);
                     FileName = FileName.Remove(FileName.LastIndexOf('.'));
 
                     yamlMetadata.FileName = FileName;
