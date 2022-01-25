@@ -36,13 +36,14 @@ namespace MarkupCompiler.Services
 
             List<BlogPostDocument> Docs = new List<BlogPostDocument>();
 
-            using (StringWriter stringWriter = new StringWriter())
+            foreach (var Path in Paths)
             {
-                HtmlRenderer htmlRenderer = new HtmlRenderer(stringWriter);
-                MarkdownPipeline.Setup(htmlRenderer);
-
-                foreach (var Path in Paths)
+                using (StringWriter stringWriter = new())
                 {
+                    HtmlRenderer htmlRenderer = new(stringWriter);
+                    MarkdownPipeline.Setup(htmlRenderer);
+
+
                     var markdown = File.ReadAllText(Path);
 
                     MarkdownDocument Document = Markdown.Parse(markdown, MarkdownPipeline);
