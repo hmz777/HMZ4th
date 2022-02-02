@@ -34,6 +34,16 @@ export function GetRecaptchaResponse() {
     }
 }
 
+export function LoadRecaptcha(siteKey) {
+    try {
+        grecaptcha.render("recaptcha-container", {
+            sitekey: siteKey
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 export function Dispose() {
 
 }
