@@ -28,6 +28,16 @@
         flex-flow: column wrap;
         height: 100%;
 
+        @include breakpoint($medium) {
+            font-size: 1.4rem;
+
+            .work-card-tech {
+                .work-card-tech-item {
+                    font-size: .9rem;
+                }
+            }
+        }
+
         .work-card-head {
             border-bottom-right-radius: 1rem;
             align-self: flex-start;

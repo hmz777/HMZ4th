@@ -8,19 +8,22 @@ $mainFont: 'Spline Sans', sans-serif;
 $mainFont: 'Maven Pro', sans-serif;
 
 /*Breakpoints*/
-$x-small: max-width 575px;
-$small: max-width 767px;
-$medium: max-width 991px;
-$large: max-width 1199px;
-$x-large: max-width 1399px;
-$xx-large: min-width 1400px;
-
+$xx-small-val: 400px;
 $x-small-val: 575px;
 $small-val: 767px;
 $medium-val: 991px;
 $large-val: 1199px;
 $x-large-val: 1399px;
-$xx-large-val: 1400px;
+$xx-large-val: 1920px;
+
+$xx-small: max-width $xx-small-val;
+$x-small: max-width $x-small-val;
+$small: max-width $small-val;
+$medium: max-width $medium-val;
+$large: max-width $large-val;
+$x-large: max-width $x-large-val;
+$xx-large: max-width $xx-large-val;
+$xxx-large: min-width $xx-large-val + 1;
 
 /*Colors*/
 $accentColor1: #190061;
@@ -52,6 +55,10 @@ $sidebarBorderThickness: .2rem;
 $sidebarLinkColor: white;
 $sidebarLinkBorderThickness: .2rem;
 $sidebarLinkBorderColor: white;
+
+/*Footer*/
+$footerBackColor: black;
+$footerTextColor: white;
 
 /*Logo*/
 $logoBackColor: $accentColor2;

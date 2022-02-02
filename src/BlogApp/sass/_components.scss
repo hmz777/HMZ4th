@@ -1,5 +1,6 @@
 ﻿#eye {
-    #InnerEye {
+    @include breakpoint($medium) {
+        display: none;
     }
 
     #Eyelid {
@@ -70,6 +71,14 @@
     word-break: break-all;
     margin: 1rem 0 2rem;
 
+    @include breakpoint($medium) {
+        margin: 4rem 0 2rem;
+
+        h1 {
+            font-size: calc(4.5rem + 1vmin);
+        }
+    }
+
     h1 {
         margin: 0;
     }
@@ -100,7 +109,7 @@
     border: $appBorderThickness solid $appBorderColor;
     padding: $articlePadding;
     overflow: hidden;
-    box-shadow: -15px -15px 0px 0px rgb(53, 0, 211);
+    box-shadow: -.8rem -.8rem 0px 0px rgb(53, 0, 211);
     width: 100%;
 }
 
@@ -127,6 +136,10 @@
         color: white;
         box-shadow: 0px 0.9px 2.7px rgba(0, 0, 0, 0.093), 0px 2.2px 6.9px rgba(0, 0, 0, 0.133), 0px 4.4px 14.2px rgba(0, 0, 0, 0.167), 0px 9.1px 29.2px rgba(0, 0, 0, 0.207), 0px 25px 80px rgba(0, 0, 0, 0.3);
         transition: transform .3s $mainEasing,opacity .3s $mainEasing;
+
+        @include breakpoint($medium) {
+            font-size: 1.2rem;
+        }
 
         &:not(:last-of-type) {
             margin-bottom: 1rem;

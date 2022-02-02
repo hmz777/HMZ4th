@@ -1,0 +1,46 @@
+﻿.footer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    background: $footerBackColor;
+    color: $footerTextColor;
+    padding: 1rem 2rem;
+    margin-top: 2rem;
+    display: none;
+
+    @include breakpoint($medium) {
+
+        .footer-social {
+            margin-top: 1rem;
+        }
+    }
+
+    @include breakpoint($small) {
+        justify-content: center;
+    }
+
+    .footer-social {
+        display: flex;
+
+        ul {
+            display: flex;
+            flex-flow: row wrap;
+            list-style: none;
+            margin: auto;
+            padding: 0;
+
+            li {
+                &:not(:last-child) {
+                    margin-right: .3rem;
+                }
+
+                a {
+                    font-size: 2rem;
+                    color: white;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}

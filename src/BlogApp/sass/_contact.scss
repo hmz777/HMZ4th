@@ -16,6 +16,16 @@
             flex-flow: row wrap;
             justify-content: space-between;
 
+            @include breakpoint($medium) {
+                input, textarea, label, button {
+                    font-size: 1.2rem;
+                }
+
+                .validation-message {
+                    font-size: 1rem;
+                }
+            }
+
             legend {
                 position: relative;
                 top: 0;

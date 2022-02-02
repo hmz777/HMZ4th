@@ -1,4 +1,4 @@
-﻿@mixin text-shadow ($par1: -6px,$par2: -6px,$par3: 0px,$par4: $accentColor3) {
+﻿@mixin text-shadow ($par1: -.5rem,$par2: -.5rem,$par3: 0px,$par4: $accentColor3) {
     text-shadow: $par1 $par2 $par3 $par4;
     transition: text-shadow $easingDuration $mainEasing;
 
@@ -41,7 +41,7 @@
     border-radius: $appBorderRadius;
     font-weight: bolder;
     font-size: 1.2rem;
-    box-shadow: -5px -5px 0px 0px rgb(53, 0, 211);
+    box-shadow: -.3rem -.3rem 0px 0px rgb(53, 0, 211);
     background: white;
 
     @if $activeEffect {
@@ -49,7 +49,7 @@
 
         &:active {
             box-shadow: 0px 0px 0px 0px rgb(53, 0, 211);
-            transform: translate(-5px,-5px) !important;
+            transform: translate(-.3rem,-.3rem) !important;
         }
     }
 }

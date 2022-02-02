@@ -11,12 +11,15 @@ html, body {
     padding: 0;
     width: 100%;
     height: 100%;
-    font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     display: flex;
     flex-flow: column wrap;
+}
+
+html {
+    font-size: 16px;
 }
 
 #app {
@@ -37,6 +40,7 @@ html, body {
 
         .sidebar {
             transform: translateX(0);
+            opacity: 1;
         }
     }
 
@@ -73,8 +77,15 @@ main {
     margin-left: auto;
     margin-right: auto;
     min-height: 100%;
-    max-width: 75rem;
     width: 85%;
+
+    @include breakpoint($medium) {
+        width: 90%;
+    }
+
+    @include breakpoint($small) {
+        width: 100%;
+    }
 }
 
 h1 {

@@ -14,7 +14,7 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        box-shadow: -15px -15px 0px 0px $accentColor1;
+        box-shadow: -.85rem -.85rem 0px 0px $accentColor1;
 
         .post-desc {
             background: $accentColor2;
@@ -59,23 +59,106 @@
     }
 
     .post-body {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: flex-start;
         padding: 2rem 0;
         max-width: 100%;
         margin: 0 auto;
         width: 80%;
-        font-size: 1.3rem;
+        max-width: 100%;
+        font-size: 1.5rem;
+        word-break: break-word;
+
+        @include breakpoint($medium) {
+            width: 100%;
+        }
 
         h1, h2, h3, h4, h5, h6 {
             text-shadow: none;
         }
 
+        h1 {
+            font-size: 4rem;
+        }
+
+        h2 {
+            font-size: 3rem;
+        }
+
+        h3 {
+            font-size: 2.5rem;
+        }
+
+        h4 {
+            font-size: 2rem;
+        }
+
+        h5 {
+            font-size: 1.8rem;
+        }
+
+        h6 {
+            font-size: 1.5rem;
+        }
+
         blockquote {
-            padding: 1rem;
+            padding: .5rem;
             border-radius: 1rem;
             background: white;
             color: black;
             border-left: 15px solid $accentColor2;
             background: lightgray;
+            margin: 1rem 0;
+        }
+
+        img {
+            font-size: 1rem;
+            height: auto;
+            max-width: 50%;
+            margin: 1rem auto;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 6px solid $accentColor2;
+            width: 100%;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+
+        mark {
+            background: $accentColor2;
+            color: white;
+        }
+
+        .table-container {
+            border-radius: 1rem;
+            display: block;
+            overflow-x: auto;
+            /*white-space: nowrap;*/
+
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+
+                th {
+                    padding: 1rem;
+                    color: white;
+                    background: $accentColor2;
+                }
+
+                td {
+                    padding: 1rem;
+                    background: lightgray;
+                }
+            }
         }
 
         ul {
@@ -92,7 +175,7 @@
         width: 65%;
         border-right: 5px solid $accentColor2;
         border-top: 4px solid $accentColor2;
-        box-shadow: 15px 15px 0px 0px $accentColor1;
+        box-shadow: .85rem .85rem 0px 0px $accentColor1;
 
         @include breakpoint($medium) {
             width: 100%;
