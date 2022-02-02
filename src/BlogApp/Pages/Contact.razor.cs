@@ -33,6 +33,16 @@ namespace BlogApp.Pages
             HttpClient = HttpClientFactory.CreateClient("External");
         }
 
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await base.OnAfterRenderAsync(firstRender);
+
+            if (!firstRender && PageModule != null)
+            {
+                await PageModule.InvokeVoidAsync("LoadRecaptcha", Configuration.GetSection("reCAPTCHA:SiteKey").Value);
+            }
+        }
+
         async Task OnValidSubmit()
         {
             SubmitButtonState = "active";

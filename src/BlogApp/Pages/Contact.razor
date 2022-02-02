@@ -36,7 +36,7 @@
                     <ValidationMessage For="@(() => ContactModel.Message)" />
                 </div>
                 <div class="form-input-wrapper">
-                    <div class="g-recaptcha" data-sitekey="@(Configuration.GetSection("reCAPTCHA:SiteKey").Value)"></div>
+                    <div id="recaptcha-container"></div>
                 </div>
                 <input type="hidden" name="_gotcha">
                 <button class="form-el @SubmitButtonState" type="submit">Send</button>
