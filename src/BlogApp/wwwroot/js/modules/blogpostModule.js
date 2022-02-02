@@ -18,7 +18,7 @@ export function InitAnimation() {
 }
 
 export function HighlightCode() {
-    Prism.highlightAllUnder(document.querySelector(".post-body"));
+    hljs.highlightAll(".post-body");
 }
 
 export function Dispose() {
