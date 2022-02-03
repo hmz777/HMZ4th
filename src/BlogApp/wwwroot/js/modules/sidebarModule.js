@@ -4,7 +4,7 @@ var sidebarBtn = document.querySelector(".sidebar-toggle");
 export function InitHandler(componentRef) {
     if (window.matchMedia("(max-width: 991px)").matches) {
         document.onclick = function (e) {
-            if (e.target.className.indexOf("side-link") != -1) {
+            if (e.target.className.indexOf("side-link") != -1 || e.target.parentElement.parentElement.className.indexOf("side-link") != -1) {
                 componentRef.invokeMethodAsync("HideSidebar");
             }
         }
@@ -18,7 +18,7 @@ export function InitAnimation() {
         opacity: [0, 1],
         easing: "easeOutQuint",
         duration: GlobalOptions.HeaderAnimationDuration,
-        delay: anime.stagger(100, { start: 100 }),
+        delay: anime.stagger(100, { start: 200 }),
         autoPlay: true,
         loop: false
     });
@@ -29,7 +29,7 @@ export function InitAnimation() {
         opacity: [0, 1],
         easing: "easeOutQuint",
         duration: GlobalOptions.HeaderAnimationDuration,
-        delay: anime.stagger(100, { start: 100 }),
+        delay: anime.stagger(100, { start: 200 }),
         autoPlay: true,
         loop: false
     });
