@@ -1,0 +1,35 @@
+﻿#about-block {
+    .app-meta {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        display: inline-block;
+        margin-left: auto;
+        background: $accentColor3;
+        border-radius: 1rem;
+        color: white;
+        padding: .5rem 1rem;
+    }
+
+    .content-article {
+        article {
+            &:not(:last-child) {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    li {
+        font-size: 1.2rem;
+
+        &:not(:last-child) {
+            margin-bottom: .5rem;
+        }
+    }
+
+    h2 {
+        text-shadow: none;
+        font-size: 2rem;
+        margin: 0 0 .5rem;
+    }
+}

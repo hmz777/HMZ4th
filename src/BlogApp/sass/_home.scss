@@ -249,5 +249,45 @@
                 z-index: 1;
             }
         }
+
+        @include breakpoint($small) {
+            text-align: center;
+            align-items: center;
+
+            .f-span {
+                font-size: 7rem;
+                align-self: center !important;
+                margin: 0 !important;
+
+                &:nth-child(1) {
+                    .s-span {
+                        top: -1rem;
+                    }
+                }
+
+                &:nth-child(2) {
+                    .s-span {
+                        bottom: -1.3rem;
+                    }
+                }
+
+                .s-span {
+                    align-self: center !important;
+                    margin: 0;
+                }
+            }
+        }
+
+        @include breakpoint($x-small) {
+
+            .f-span {
+                font-size: 5rem;
+
+                .s-span {
+                    font-size: 2rem;
+                    letter-spacing: -.3rem;
+                }
+            }
+        }
     }
 }
