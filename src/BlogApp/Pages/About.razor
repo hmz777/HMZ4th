@@ -1,8 +1,87 @@
 ﻿@inherits TransitionPageBase<About>
+@inject IConfiguration Config
 @page "/about"
 
 <article id="about-block">
     <header class="article-header">
         <h1>About</h1>
     </header>
+    <article class="content-article">
+        <div class="app-meta">
+            <span>
+                v@(System.Reflection.Assembly
+                .GetExecutingAssembly()?
+                .GetName()?
+                .Version?
+                .ToString())
+            </span>
+            <span>
+                (@Config.GetSection("AppType").Value)
+            </span>
+        </div>
+        <article>
+            <header>
+                <h2>Info</h2>
+            </header>
+            <ul>
+                <li>
+                    This app is made from scratch using <a target="_blank" href="https://www.blazor.net/">Blazor Web Assembly</a>.
+                </li>
+                <li>
+                    Hosted on <a target="_blank" href="https://www.netlify.com/">Netlify</a>.
+                </li>
+                <li>
+                    Deployed via  <a target="_blank" href="https://azure.microsoft.com/">Azure Pipelines</a>.
+                </li>
+                <li>
+                    All the code for this site is open source and available on <a target="_blank" href="https://github.com/hmz777/HMZ4th">GitHub</a> under the GNU General Public License v3.
+                </li>
+            </ul>
+        </article>
+        <article>
+            <header>
+                <h2>Tools used in this project</h2>
+            </header>
+            <ul>
+                <li>
+                    <a target="_blank" href="https://sass-lang.com/">Sass</a>.
+                </li>
+                <li>
+                    <a target="_blank" href="https://github.com/lunet-io/markdig">Markdig</a>.
+                </li>
+                <li>
+                    <a target="_blank" href="https://github.com/aaubry/YamlDotNet">YamlDotNet</a>.
+                </li>
+                <li>
+                    <a target="_blank" href="https://github.com/icons8/line-awesome">Line Awesome</a>.
+                </li>
+            </ul>
+        </article>
+        <article>
+            <header>
+                <h2>Books that I read/reading</h2>
+            </header>
+            <ul>
+                <li>
+                    <a target="_blank" href="https://www.amazon.com/CLR-via-4th-Developer-Reference/dp/0735667454">CLR via C# (Developer Reference)</a>.
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.amazon.com/C-9-0-Nutshell-Definitive-Reference/dp/1098100964">C# 9.0 in a Nutshell: The Definitive Reference</a>.
+                </li>
+            </ul>
+        </article>
+        <article>
+            <header>
+                <h2>Books that I want to read in the future</h2>
+            </header>
+            <ul>
+                <li>
+                    <a target="_blank" href="https://www.amazon.com/Primer-5th-Stanley-B-Lippman/dp/0321714113">C++ Primer (5th Edition)</a>.
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.amazon.com/Effective-Modern-Specific-Ways-Improve/dp/1491903996">Effective Modern C++</a>.
+                </li>
+            </ul>
+        </article>
+    </article>
 </article>
