@@ -142,11 +142,12 @@
             border-radius: 1rem;
             display: block;
             overflow-x: auto;
-            /*white-space: nowrap;*/
+            width: 100%;
 
             table {
                 border-collapse: collapse;
                 border-spacing: 0;
+                width: 100%;
 
                 th {
                     padding: 1rem;

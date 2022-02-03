@@ -16,6 +16,10 @@
             flex-flow: row wrap;
             justify-content: space-between;
 
+            input, textarea, label, button {
+                font-size: 1.1rem;
+            }
+
             @include breakpoint($medium) {
                 input, textarea, label, button {
                     font-size: 1.2rem;
