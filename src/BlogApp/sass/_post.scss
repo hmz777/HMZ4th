@@ -177,6 +177,7 @@
         border-right: 5px solid $accentColor2;
         border-top: 4px solid $accentColor2;
         box-shadow: .85rem .85rem 0px 0px $accentColor1;
+        margin-top: auto;
 
         @include breakpoint($medium) {
             width: 100%;
