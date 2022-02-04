@@ -1,1 +1,40 @@
 ﻿@inherits TransitionPageBase<Tags>
+@page "/blog/tags"
+@page "/blog/tags/{Tag}"
+
+<article id="tags-block">
+    <header class="article-header">
+        <h1>Blog Tags</h1>
+    </header>
+    <article class="content-article">
+        @if (DataIsValid)
+        {
+            @foreach (var item in TagsData)
+            {
+                <article class="tag-item" id="@item">
+                    <header>
+                        <h4 class="tag-title">@item</h4>
+                    </header>
+                    <article class="tag-body">
+                        @foreach (var post in Metadata)
+                        {
+                            if (post.Tags.Contains(item))
+                            {
+                                <article class="tag-post">
+                                    <a href="/blog/post/@post.Url">
+                                        <header>
+                                            <h5 class="tag-post-title">@post.Title</h5>
+                                        </header>
+                                        <div class="tag-post-description">
+                                            @post.Description
+                                        </div>
+                                    </a>
+                                </article>
+                            }
+                        }
+                    </article>
+                </article>
+            }
+        }
+    </article>
+</article>
