@@ -15,6 +15,6 @@ Tags:
 NoList: false
 ...
 
-### This post has been left intentionally empty.
+### This post has been intentionally left empty.
 
 It will be updated in the future.
