@@ -8,7 +8,8 @@ namespace BlogApp.Pages
 {
     public partial class BlogPost : TransitionPageBase<BlogPost>
     {
-        [Inject] public IBlogPostProcessorService BlogPostProcessorService { get; set; }
+        [Inject] IBlogPostProcessorService BlogPostProcessorService { get; set; }
+        [Inject] NavigationManager NavigationManager { get; set; }
         [Parameter] public string Url { get; set; }
 
         BlogPostDocument BlogPostDocument { get; set; }
