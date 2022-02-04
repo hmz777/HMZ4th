@@ -36,6 +36,7 @@
 
   <ItemGroup>
     <Folder Include="Shared\Skills\" />
+    <Folder Include="Shared\Tags\" />
     <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
