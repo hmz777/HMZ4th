@@ -225,8 +225,9 @@
                 margin-left: 10%;
 
                 .s-span {
-                    top: -.9rem;
+                    top: -1rem;
                     left: 0;
+                    box-shadow: -.3rem -.3rem 0px 0px darken($accentColor4,10%);
                 }
             }
 
@@ -235,8 +236,9 @@
                 margin-right: 10%;
 
                 .s-span {
-                    bottom: -1.7rem;
+                    bottom: -2.2rem;
                     right: 0;
+                    box-shadow: -.3rem -.3rem 0px 0px darken($accentColor4,10%);
                 }
             }
 
@@ -278,13 +280,13 @@
 
                 &:nth-child(1) {
                     .s-span {
-                        top: -1.2rem;
+                        top: -1.4rem;
                     }
                 }
 
                 &:nth-child(2) {
                     .s-span {
-                        bottom: -1.8rem;
+                        bottom: -2.2rem;
                     }
                 }
 

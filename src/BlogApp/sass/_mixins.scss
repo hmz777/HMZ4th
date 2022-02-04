@@ -41,7 +41,7 @@
     border-radius: $appBorderRadius;
     font-weight: bolder;
     font-size: 1.2rem;
-    box-shadow: -.3rem -.3rem 0px 0px $color;
+    box-shadow: -.3rem -.3rem 0px 0px darken($color,10%);
     background: white;
 
     @if $activeEffect {

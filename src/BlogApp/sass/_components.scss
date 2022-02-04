@@ -109,7 +109,7 @@
     border: $appBorderThickness solid $appBorderColor;
     padding: $articlePadding;
     overflow: hidden;
-    box-shadow: -.8rem -.8rem 0px 0px rgb(53, 0, 211);
+    box-shadow: -.8rem -.8rem 0px 0px darken($accentColor3,10%);
     width: 100%;
 }
 

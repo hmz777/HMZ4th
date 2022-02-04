@@ -17,7 +17,7 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        box-shadow: -.85rem -.85rem 0px 0px $accentColor1;
+        box-shadow: -.85rem -.85rem 0px 0px darken($accentColor1,10%);
 
         .post-desc {
             background: $accentColor2;
@@ -179,7 +179,7 @@
         width: 65%;
         border-right: 5px solid $accentColor2;
         border-top: 4px solid $accentColor2;
-        box-shadow: .85rem .85rem 0px 0px $accentColor1;
+        box-shadow: .85rem .85rem 0px 0px darken($accentColor1,10%);
         margin-top: auto;
 
         @include breakpoint($medium) {

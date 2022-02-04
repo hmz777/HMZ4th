@@ -19,8 +19,12 @@
         }
     }
 
+    ul {
+        padding-left: 2rem;
+    }
+
     li {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
 
         &:not(:last-child) {
             margin-bottom: .5rem;
@@ -29,7 +33,30 @@
 
     h2 {
         text-shadow: none;
-        font-size: 2rem;
+        font-size: 2.3rem;
         margin: 0 0 .5rem;
+    }
+}
+
+#privacy-block {
+    h2 {
+        text-shadow: none;
+        font-size: 2.3rem;
+
+        &:not(:first-child) {
+            margin-top: .5rem;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: .5rem;
+        }
+    }
+
+    p, ul, ol {
+        font-size: 1.4rem;
+    }
+
+    ul, ol {
+        padding-left: 2rem;
     }
 }
