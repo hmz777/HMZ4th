@@ -1,6 +1,9 @@
 ﻿.post {
     display: flex;
     flex-flow: column wrap;
+    height: 100%;
+    width: 100%;
+    flex: 1;
 
     .post-header {
         position: relative;

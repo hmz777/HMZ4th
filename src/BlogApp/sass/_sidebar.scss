@@ -61,7 +61,7 @@
                         content: la-content($la-dot-circle);
                         position: absolute;
                         left: -2rem;
-                        color: white;
+                        color: $accentColor4;
                         transition: opacity .3s $mainEasing;
                     }
 
@@ -166,7 +166,7 @@
         span {
             color: $logoLettersColor;
             font-size: $logoLettersSize;
-            @include text-shadow;
+            @include text-shadow($par4:$accentColor4);
             font-weight: bold;
         }
     }

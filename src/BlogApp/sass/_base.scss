@@ -5,6 +5,11 @@
     -ms-box-sizing: border-box;
 }
 
+::selection {
+    background: $accentColor4;
+    color: black;
+}
+
 html, body {
     font-family: $mainFont;
     margin: 0;

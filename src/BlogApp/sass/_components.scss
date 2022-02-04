@@ -203,12 +203,8 @@
     top: 1rem;
     left: 1rem;
     transition: transform .5s $mainEasing;
-    @include shadow-btn($padding:.5rem,$activeEffect:false);
+    @include shadow-btn($padding:.5rem,$activeEffect:false,$color:$accentColor4);
     z-index: 2000;
-
-    &.nav-active {
-        /* transform: translateX($sidebarWidth);*/
-    }
 
     .sandwich-btn {
         height: 1.5rem;

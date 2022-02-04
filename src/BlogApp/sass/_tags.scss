@@ -1,1 +1,43 @@
-﻿
+﻿#tags-block {
+    .tag-item {
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+
+        .tag-title {
+            text-shadow: none;
+            margin: 0 0 1rem;
+        }
+
+        .tag-body {
+            display: flex;
+            flex-flow: column wrap;
+            align-items: flex-start;
+
+            .tag-post {
+                display: inline-block;
+                border-radius: 1rem;
+                border: .25rem solid lightgray;
+                padding: 1rem;
+                transition: border-color .3s $mainEasing;
+
+                &:hover {
+                    border-color: darkgrey;
+                }
+
+                &:active {
+                    border-color: $accentColor3;
+                }
+
+                .tag-post-title {
+                    text-shadow: none;
+                    margin: 0 0 1rem;
+                }
+
+                .tag-post-description {
+                    color: black;
+                }
+            }
+        }
+    }
+}

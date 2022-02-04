@@ -8,6 +8,7 @@ $mainFont: 'Spline Sans', sans-serif;
 $mainFont: 'Maven Pro', sans-serif;
 
 /*Breakpoints*/
+$xxx-small-val: 350px;
 $xx-small-val: 400px;
 $x-small-val: 575px;
 $small-val: 767px;
@@ -16,6 +17,7 @@ $large-val: 1199px;
 $x-large-val: 1399px;
 $xx-large-val: 1920px;
 
+$xxx-small: max-width $xxx-small-val;
 $xx-small: max-width $xx-small-val;
 $x-small: max-width $x-small-val;
 $small: max-width $small-val;
