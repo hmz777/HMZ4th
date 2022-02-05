@@ -18,7 +18,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
+- script: dotnet build BlogApp.csproj --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
   workingDirectory: src/BlogApp
 
@@ -33,7 +33,7 @@ steps:
     publishWebProjects: true
     zipAfterPublish: false
     modifyOutputPath: false
-    arguments: 'BlogApp.csproj --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     workingDirectory: src/BlogApp
     
 - task: PublishBuildArtifacts@1
