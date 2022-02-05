@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace BlogApp.Models
+﻿namespace BlogApp.Models
 {
     public class BlogPostDocument
     {
@@ -18,6 +13,8 @@ namespace BlogApp.Models
         public string Category { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
+        public int ImageW { get; set; }
+        public int ImageH { get; set; }
         public string Url { get; set; }
         public DateTime Date { get; set; }
         public DateTime DateUpdated { get; set; }
