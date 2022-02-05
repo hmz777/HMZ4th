@@ -54,7 +54,21 @@
 </head>
 
 <body>
-    <div id="app">Loading...</div>
+    <div id="app">
+        <div id="wasm-loader">
+            <div class="spinner-box">
+                <div class="configure-border-1">
+                    <div class="configure-core"></div>
+                </div>
+                <div class="configure-border-2">
+                    <div class="configure-core"></div>
+                </div>
+            </div>
+            <div class="message">
+                Loading...
+            </div>
+        </div>
+    </div>
 
     <script src="_framework/blazor.webassembly.js" autostart="false"></script>
     <script>
