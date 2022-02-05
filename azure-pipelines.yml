@@ -33,7 +33,7 @@ steps:
     publishWebProjects: true
     zipAfterPublish: false
     modifyOutputPath: false
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    arguments: 'BlogApp.csproj --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     workingDirectory: src/BlogApp
     
 - task: PublishBuildArtifacts@1
