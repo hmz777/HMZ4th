@@ -21,4 +21,9 @@ builder.Services.AddAutoMapper(System.Reflection.Assembly.GetExecutingAssembly()
 
 builder.Services.AddScoped<IBlogPostProcessorService, BlogPostProcessor>();
 
+if (builder.HostEnvironment.IsProduction())
+{
+    builder.Logging.SetMinimumLevel(LogLevel.None);
+}
+
 await builder.Build().RunAsync();
