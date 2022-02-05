@@ -29,7 +29,7 @@ namespace BlogApp.Pages
         {
             await base.OnAfterRenderAsync(firstRender);
 
-            if (!string.IsNullOrWhiteSpace(Tag))
+            if (!string.IsNullOrWhiteSpace(Tag) && PageModule != null)
                 await PageModule.InvokeVoidAsync("ScrollElementIntoView", Tag);
         }
 
