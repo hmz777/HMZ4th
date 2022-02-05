@@ -61,4 +61,28 @@
             </div>
         </article>
     </article>
+
+    <PageTitle>
+        @BlogPostDocument.Yaml.Title - Hamzi Alsheikh
+    </PageTitle>
+
+    <HeadContent>
+        <meta name="description" content="@BlogPostDocument.Yaml.Description" />
+        <meta property="og:title" content="@BlogPostDocument.Yaml.Title - Hamzi Alsheikh" />
+        <meta property="og:type" content="article" />
+        <meta property="article:published_time" content="@BlogPostDocument.Yaml.Date" />
+        <meta property="article:modified_time" content="@BlogPostDocument.Yaml.DateUpdated" />
+        <meta property="article:author" content="Hamzi Alsheikh" />
+        <meta property="article:section" content="@BlogPostDocument.Yaml.Category" />
+        <meta property="article:tag" content="@string.Join(',', BlogPostDocument.Yaml.Tags)" />
+        <meta property="twitter:image" content="/img/blog/posts/@BlogPostDocument.Yaml.ImageUrl" />
+        <meta property="og:image" content="/img/blog/posts/@BlogPostDocument.Yaml.ImageUrl" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="@BlogPostDocument.Yaml.ImageW">
+        <meta property="og:image:height" content="@BlogPostDocument.Yaml.ImageH">
+        <meta property="og:url" content="@NM.Uri" />
+        <meta property="og:description" content="@BlogPostDocument.Yaml.Description" />
+        <meta property="twitter:title" content="@BlogPostDocument.Yaml.Title - Hamzi Alsheikh" />
+        <meta property="twitter:description" content="@BlogPostDocument.Yaml.Description" />
+    </HeadContent>
 }
