@@ -13,6 +13,17 @@ export function InitAnimation() {
         autoPlay: true,
         loop: false
     });
+
+    anime({
+        targets: '#tags-block .tag-item',
+        opacity: [0, 1],
+        translateX: [-10, 0],
+        easing: "easeOutQuint",
+        duration: GlobalOptions.HeaderAnimationDuration,
+        autoPlay: true,
+        delay: anime.stagger(100, { start: 100 }),
+        loop: false
+    });
 }
 
 export function ScrollElementIntoView(id) {
