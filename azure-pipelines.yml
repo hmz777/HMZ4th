@@ -51,5 +51,5 @@ steps:
     git checkout -b prod
     git add -A
     git commit -m "Create build $(Build.BuildId)"
-    git push -f https://$(github_pat)@github.com/hmz777/HMZ4th prod
+    git push -f https://$(github_pat)@github.com/hmz777/HMZ4th.git prod
   displayName: 'Publish to Production'
