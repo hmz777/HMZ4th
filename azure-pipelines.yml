@@ -20,12 +20,12 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
-  workingDirectory: HMZ-Software
+  workingDirectory: src/BlogApp
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'run'
-    projects: 'MarkupCompiler/*.csproj'
+    projects: 'src/MarkupCompiler/*.csproj'
 
 - task: DotNetCoreCLI@2
   inputs:
@@ -34,7 +34,7 @@ steps:
     zipAfterPublish: false
     modifyOutputPath: false
     arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    workingDirectory: HMZ-Software
+    workingDirectory: src/BlogApp
     
 - task: PublishBuildArtifacts@1
   inputs:
@@ -48,8 +48,8 @@ steps:
     git config --global core.autocrlf false
     cd $(Build.ArtifactStagingDirectory)/wwwroot
     git init
-    git checkout -b gh-pages
+    git checkout -b prod
     git add -A
     git commit -m "Create build $(Build.BuildId)"
-    git push -f https://$(github_pat)@github.com/hmz777/Z-Blog.git gh-pages
-  displayName: 'Publish to GitHub Pages'
+    git push -f https://$(github_pat)@github.com/hmz777/Z-Blog.git prod
+  displayName: 'Publish to Production'
