@@ -16,6 +16,10 @@
             flex-flow: row wrap;
             justify-content: space-between;
 
+            .form-el {
+                opacity: 0;
+            }
+
             input, textarea, label, button {
                 font-size: 1.1rem;
             }
@@ -109,10 +113,6 @@
     margin-bottom: .5rem;
     width: 100%;
     max-width: 100%;
-
-    &.form-el {
-        opacity: 0;
-    }
 
     label {
         display: inline-block;

@@ -85,6 +85,7 @@
     }
 
     .header-links {
+        opacity: 0;
 
         @include breakpoint($x-small) {
             margin-top: 2rem;
