@@ -110,6 +110,10 @@
     width: 100%;
     max-width: 100%;
 
+    &.form-el {
+        opacity: 0;
+    }
+
     label {
         display: inline-block;
         position: absolute;

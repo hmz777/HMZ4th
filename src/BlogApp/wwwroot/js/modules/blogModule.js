@@ -7,6 +7,7 @@
 export function InitAnimation() {
     anime({
         targets: '.article-header h1, .header-link',
+        opacity: [0, 1],
         translateY: [500, 0],
         easing: "easeOutQuint",
         duration: GlobalOptions.HeaderAnimationDuration,

@@ -1,4 +1,9 @@
 ﻿#search-block {
+
+    .content-article {
+        opacity: 0;
+    }
+
     .search-cards-container {
         display: flex;
         flex-flow: column wrap;
