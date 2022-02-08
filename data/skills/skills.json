@@ -1,0 +1,56 @@
+{
+  "Skills": {
+    "LANGUAGES AND SCRIPTING": [
+      "C#",
+      "Javascript",
+      "PowerShell",
+      "MATLAB"
+    ],
+    "MARKUP": [
+      "HTML5",
+      "CSS3"
+    ],
+    "FRAMEWORKS": [
+      ".NET Framework",
+      ".NET Core",
+      "ASP.Net Core",
+      "Blazor WebAssembly",
+      "Blazor Server",
+      "Entity Framework Core",
+      "WPF",
+      "WCF",
+      "Windows Forms"
+    ],
+    "TOOLS": [
+      "Visual Studio",
+      "Visual Studio Code",
+      "Microsoft Blend",
+      "MATLAB",
+      "Postman",
+      "Gulp",
+      "Grunt",
+      "NPM",
+      "Libman",
+      "SSMS",
+      "CD using Azure Pipelines",
+      "Git",
+      "JetBrains DotPeek",
+      "JetBrains DotTrace",
+      "SASS"
+    ],
+    "DATABASE SYSTEMS": [
+      "SQL Server",
+      "PostgreSQL"
+    ],
+    "LIBRARIES": [
+      "jQuery",
+      "Bootstrap",
+      "SignalR"
+    ],
+    "OTHER": [
+      "Arabic (Native Language)",
+      "English (Professional Working Proficiency)",
+      "German (Elementary Proficiency)"
+    ]
+  }
+}
