@@ -85,7 +85,6 @@
     }
 
     .header-links {
-        opacity: 0;
 
         @include breakpoint($x-small) {
             margin-top: 2rem;
@@ -94,6 +93,7 @@
         .header-link {
             display: inline-block;
             text-align: center;
+            opacity: 0;
             @include shadow-btn;
 
             &:not(:last-of-type) {
