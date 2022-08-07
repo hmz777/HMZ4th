@@ -1,0 +1,11 @@
+User-Agent: *
+Disallow : /?
+Disallow : /blog?
+Disallow : /blog/post?
+Disallow : /blog/post
+Disallow : /search?
+Disallow : /site?
+Disallow : /terms?
+Disallow : /blog/tags?
+
+sitemap: https://www.hamzialsheikh.tk/sitemap.xml
