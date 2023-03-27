@@ -12,16 +12,19 @@
     ],
     "FRAMEWORKS": [
       ".NET Framework",
-      ".NET Core",
+      ".NET",
       "ASP.Net Core",
       "Blazor WebAssembly",
       "Blazor Server",
       "Entity Framework Core",
       "WPF",
-      "WCF",
+      "Avalonia",
+      "ReactiveUI",
       "Windows Forms"
     ],
     "TOOLS": [
+      "Docker",
+      "Kubernetes",
       "Visual Studio",
       "Visual Studio Code",
       "Microsoft Blend",
@@ -30,12 +33,11 @@
       "Gulp",
       "Grunt",
       "NPM",
-      "Libman",
       "SSMS",
       "CD using Azure Pipelines",
       "Git",
-      "JetBrains DotPeek",
-      "JetBrains DotTrace",
+      "GitHub",
+      "GitHub Actions",
       "SASS"
     ],
     "DATABASE SYSTEMS": [
@@ -49,8 +51,8 @@
     ],
     "OTHER": [
       "Arabic (Native Language)",
-      "English (Professional Working Proficiency)",
-      "German (Elementary Proficiency)"
+      "English (Professional Working Proficiency C1-C2)",
+      "German (Intermediate B1)"
     ]
   }
 }
